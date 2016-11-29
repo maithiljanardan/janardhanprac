@@ -17,6 +17,7 @@ public class Main {
 		//MobileIron solver = new MobileIron();
 		// int testCases = in.nextInt();
 		// for (int i = 1; i <= testCases; i++)
+		//laptop se
 		//solver.solve(in, out);
 		out.close();
 	}
