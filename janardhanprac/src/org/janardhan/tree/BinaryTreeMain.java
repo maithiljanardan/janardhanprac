@@ -14,11 +14,18 @@ public class BinaryTreeMain {
 
 		System.out.print("Inorder Traversal >>> ");
 		binaryTree.printInOrder(binaryTree.treeNode);
+		
+		System.out.print("\n" + "Inorder Iterative Traversal >>> ");
+		binaryTree.printInOrderIterative(binaryTree.treeNode);
 
 		System.out.print("\n" + "PreOrder Traversal >>> ");
 		binaryTree.printPreOrder(binaryTree.treeNode);
 
-		System.out.println("\n" + "Post Order Traversal >>> ");
+		System.out.print("\n" + "PreOrder Iterative Traversal >>> ");
+		binaryTree.printPreOrderIterative(binaryTree.treeNode);
+
+		System.out.print("\n" + "Post Order Traversal >>> ");
 		binaryTree.printPostOrder(binaryTree.treeNode);
+
 	}
 }
