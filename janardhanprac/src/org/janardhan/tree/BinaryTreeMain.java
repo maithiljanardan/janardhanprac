@@ -27,8 +27,8 @@ public class BinaryTreeMain {
 		System.out.print("\n" + "Post Order Traversal >>> ");
 		binaryTree.printPostOrder(binaryTree.treeNode);
 
-		System.out.print("\n" + "Post Order Iterative Traversal >>> ");
-		binaryTree.printPostOrderIterative(binaryTree.treeNode);
+		System.out.print("\n" + "Post Order Iterative Traversal Using Two Stacks >>> ");
+		binaryTree.printPostOrderIterativeUsingTwoStacks(binaryTree.treeNode);
 
 	}
 }

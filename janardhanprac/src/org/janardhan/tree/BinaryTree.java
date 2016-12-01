@@ -99,9 +99,27 @@ public class BinaryTree {
 		System.out.print(treeNode.data + " ");
 	}
 
-	public void printPostOrderIterative(TreeNode treeNode) {
-		// TODO Auto-generated method stub
+	public void printPostOrderIterativeUsingTwoStacks(TreeNode treeNode) {
 
+		Stack<TreeNode> stack1 = new Stack<TreeNode>();
+		Stack<TreeNode> stack2 = new Stack<TreeNode>();
+
+		stack1.push(treeNode);
+
+		while (!stack1.isEmpty()) {
+
+			TreeNode poppedNode = stack1.pop();
+			stack2.push(poppedNode);
+
+			if (poppedNode.leftNode != null)
+				stack1.push(poppedNode.leftNode);
+			if (poppedNode.rightNode != null)
+				stack1.push(poppedNode.rightNode);
+
+		}
+		while (!stack2.isEmpty()) {
+			System.out.print(stack2.pop().data + " ");
+		}
 	}
 
 }
