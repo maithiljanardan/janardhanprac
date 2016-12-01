@@ -86,6 +86,22 @@ public class BinaryTree {
 			}
 		}
 
+
+		stack.push(treeNode);
+
+		while (!stack.isEmpty()) {
+
+			TreeNode poppedNode = stack.pop();
+
+			System.out.print(poppedNode.data + " ");
+
+			if (poppedNode.rightNode != null)
+				stack.push(poppedNode.rightNode);
+			if (poppedNode.leftNode != null)
+				stack.push(poppedNode.leftNode);
+
+		}
+>>>>>>> branch 'master' of https://github.com/maithiljanardan/janardhanprac.git
 	}
 
 	public void printPostOrder(TreeNode treeNode) {
