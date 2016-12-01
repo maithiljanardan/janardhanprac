@@ -14,7 +14,7 @@ public class BinaryTreeMain {
 
 		System.out.print("Inorder Traversal >>> ");
 		binaryTree.printInOrder(binaryTree.treeNode);
-		
+
 		System.out.print("\n" + "Inorder Iterative Traversal >>> ");
 		binaryTree.printInOrderIterative(binaryTree.treeNode);
 
@@ -26,6 +26,9 @@ public class BinaryTreeMain {
 
 		System.out.print("\n" + "Post Order Traversal >>> ");
 		binaryTree.printPostOrder(binaryTree.treeNode);
+
+		System.out.print("\n" + "Post Order Iterative Traversal >>> ");
+		binaryTree.printPostOrderIterative(binaryTree.treeNode);
 
 	}
 }

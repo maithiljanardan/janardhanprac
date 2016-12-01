@@ -86,7 +86,6 @@ public class BinaryTree {
 			}
 		}
 
-
 		stack.push(treeNode);
 
 		while (!stack.isEmpty()) {
@@ -114,6 +113,11 @@ public class BinaryTree {
 		printPostOrder(treeNode.rightNode);
 
 		System.out.print(treeNode.data + " ");
+	}
+
+	public void printPostOrderIterative(TreeNode treeNode) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
