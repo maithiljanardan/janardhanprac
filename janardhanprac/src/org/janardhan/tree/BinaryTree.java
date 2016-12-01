@@ -101,7 +101,7 @@ public class BinaryTree {
 				stack.push(poppedNode.leftNode);
 
 		}
->>>>>>> branch 'master' of https://github.com/maithiljanardan/janardhanprac.git
+
 	}
 
 	public void printPostOrder(TreeNode treeNode) {
