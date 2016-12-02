@@ -30,5 +30,8 @@ public class BinaryTreeMain {
 		System.out.print("\n" + "Post Order Iterative Traversal Using Two Stacks >>> ");
 		binaryTree.printPostOrderIterativeUsingTwoStacks(binaryTree.treeNode);
 
+		System.out.print("\n" + "Post Order Iterative Traversal Using One Stacks >>> ");
+		binaryTree.printPostOrderIterativeUsingOneStacks(binaryTree.treeNode);
+
 	}
 }

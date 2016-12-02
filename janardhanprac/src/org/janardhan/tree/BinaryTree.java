@@ -122,4 +122,43 @@ public class BinaryTree {
 		}
 	}
 
+	public void printPostOrderIterativeUsingOneStacks(TreeNode treeNode) {
+
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+
+		stack.push(treeNode);
+
+		TreeNode prevNode = null;
+
+		while (!stack.isEmpty()) {
+
+			TreeNode currentNode = stack.peek();
+
+			if (prevNode == null || prevNode.leftNode == currentNode || prevNode.rightNode == currentNode) {
+				if (currentNode.leftNode != null) {
+					stack.push(currentNode.leftNode);
+				} else if (currentNode.rightNode != null) {
+					stack.push(currentNode.rightNode);
+				} else {
+					System.out.print(stack.pop().data + " ");
+
+				}
+			} else if (currentNode.leftNode == prevNode) {
+				if (currentNode.rightNode != null) {
+					stack.push(currentNode.rightNode);
+				} else {
+					System.out.print(stack.pop().data + " ");
+				}
+			}
+
+			else if (currentNode.rightNode == prevNode) {
+
+				System.out.print(stack.pop().data + " ");
+
+			}
+			prevNode = currentNode;
+		}
+
+	}
+
 }
