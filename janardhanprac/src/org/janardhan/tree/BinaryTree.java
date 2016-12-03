@@ -161,8 +161,44 @@ public class BinaryTree {
 
 	}
 
-	public void printLevelOrderTreeTraversal(TreeNode treeNode2) {
+	public void printLevelOrderTreeTraversal(TreeNode treeNode) {
 
+		int treeHeight = getTreeHeight(treeNode);
+		// System.out.println("Height of the tree is >>> " + treeHeight);
+
+		for (int i = 1; i <= treeHeight; i++) {
+			printPartLevel(treeNode, i);
+
+		}
+	}
+
+	private void printPartLevel(TreeNode treeNode, int level) {
+
+		if (treeNode == null) {
+			return;
+		} else {
+			if (level == 1) {
+				System.out.print(treeNode.data + " ");
+			} else {
+				printPartLevel(treeNode.leftNode, level - 1);
+				printPartLevel(treeNode.rightNode, level - 1);
+			}
+		}
+	}
+
+	private int getTreeHeight(TreeNode treeNode) {
+
+		if (treeNode == null) {
+			return 0;
+		} else {
+
+			int leftHeight = getTreeHeight(treeNode.leftNode);
+			int rightHeight = getTreeHeight(treeNode.rightNode);
+
+			if (leftHeight > rightHeight)
+				return (leftHeight + 1);
+			return (rightHeight + 1);
+		}
 	}
 
 }
