@@ -33,5 +33,7 @@ public class BinaryTreeMain {
 		System.out.print("\n" + "Post Order Iterative Traversal Using One Stacks >>> ");
 		binaryTree.printPostOrderIterativeUsingOneStacks(binaryTree.treeNode);
 
+		System.out.print("\n" + "Level Order Tree Traversal >>> ");
+		binaryTree.printLevelOrderTreeTraversal(binaryTree.treeNode);
 	}
 }
