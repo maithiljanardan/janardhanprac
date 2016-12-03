@@ -35,5 +35,8 @@ public class BinaryTreeMain {
 
 		System.out.print("\n" + "Level Order Tree Traversal >>> ");
 		binaryTree.printLevelOrderTreeTraversal(binaryTree.treeNode);
+
+		System.out.print("\n" + "Level Order Tree Traversal Using Queue>>> ");
+		binaryTree.printLevelOrderTreeTraversalUsingQueue(binaryTree.treeNode);
 	}
 }

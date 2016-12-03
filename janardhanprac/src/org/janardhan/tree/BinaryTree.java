@@ -1,5 +1,7 @@
 package org.janardhan.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -198,6 +200,21 @@ public class BinaryTree {
 			if (leftHeight > rightHeight)
 				return (leftHeight + 1);
 			return (rightHeight + 1);
+		}
+	}
+
+	public void printLevelOrderTreeTraversalUsingQueue(TreeNode treeNode) {
+
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.add(treeNode);
+		while (!queue.isEmpty()) {
+
+			TreeNode currentNode = queue.poll();
+			System.out.print(currentNode.data + " ");
+			if (currentNode.leftNode != null)
+				queue.add(currentNode.leftNode);
+			if (currentNode.rightNode != null)
+				queue.add(currentNode.rightNode);
 		}
 	}
 
