@@ -218,4 +218,9 @@ public class BinaryTree {
 		}
 	}
 
+	public int printDiameterOfBinaryTree(TreeNode treeNode2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
