@@ -218,9 +218,35 @@ public class BinaryTree {
 		}
 	}
 
-	public int printDiameterOfBinaryTree(TreeNode treeNode2) {
-		// TODO Auto-generated method stub
-		return 0;
+	/**
+	 * 
+	 * @param treeNode
+	 * @return
+	 * @author jd The diameter of a tree (sometimes called the width) is the
+	 *         number of nodes on the longest path between two leaves in the
+	 *         tree.
+	 * 
+	 * 
+	 *         The diameter of a tree T is the largest of the following
+	 *         quantities:
+	 * 
+	 *         1. the diameter of T’s left subtree
+	 * 
+	 *         2. the diameter of T’s right subtree
+	 * 
+	 *         3.the longest path between leaves that goes through the root of T
+	 *         (this can be computed from the heights of the subtrees of T)
+	 * 
+	 */
+	public int printDiameterOfBinaryTree(TreeNode treeNode) {
+
+		if (treeNode == null) {
+			return 0;
+		} else {
+
+			return Math.max(getTreeHeight(treeNode.leftNode) + getTreeHeight(treeNode.rightNode) + 1,
+					Math.max(printDiameterOfBinaryTree(treeNode.leftNode), printDiameterOfBinaryTree(treeNode.rightNode)));
+		}
 	}
 
 }
