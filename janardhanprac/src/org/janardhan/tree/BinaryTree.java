@@ -49,6 +49,13 @@ public class BinaryTree {
 		}
 	}
 
+	/**
+	 * 
+	 * @author maithiljanardan
+	 * @param treeNode
+	 * 
+	 *            This method prints Inorder Pattern of traversal (LDR)
+	 */
 	public void printInOrder(TreeNode treeNode) {
 
 		if (treeNode == null)
@@ -61,6 +68,14 @@ public class BinaryTree {
 		printInOrder(treeNode.rightNode);
 	}
 
+	/**
+	 * @author maithiljanardan
+	 * @param treeNode
+	 * 
+	 *            This method demonstrate iterative in order traversal using
+	 *            stack
+	 * 
+	 */
 	public void printInOrderIterative(TreeNode treeNode) {
 
 		Stack<TreeNode> stack = new Stack<TreeNode>();
@@ -244,9 +259,24 @@ public class BinaryTree {
 			return 0;
 		} else {
 
-			return Math.max(getTreeHeight(treeNode.leftNode) + getTreeHeight(treeNode.rightNode) + 1,
-					Math.max(printDiameterOfBinaryTree(treeNode.leftNode), printDiameterOfBinaryTree(treeNode.rightNode)));
+			return Math.max(getTreeHeight(treeNode.leftNode) + getTreeHeight(treeNode.rightNode) + 1, Math
+					.max(printDiameterOfBinaryTree(treeNode.leftNode), printDiameterOfBinaryTree(treeNode.rightNode)));
 		}
+	}
+
+	/**
+	 * @author maithiljanardan
+	 * @param This
+	 *            method takes root of the tree as an input and print the height
+	 *            of the tree
+	 * 
+	 */
+	public int printHeightTree(TreeNode treeNode) {
+
+		if (treeNode == null)
+			return 0;
+
+		return (Math.max(getTreeHeight(treeNode.leftNode), getTreeHeight(treeNode.rightNode)) + 1);
 	}
 
 }

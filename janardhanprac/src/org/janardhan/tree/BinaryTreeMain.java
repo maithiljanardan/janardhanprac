@@ -39,6 +39,10 @@ public class BinaryTreeMain {
 		System.out.print("\n" + "Level Order Tree Traversal Using Queue >>> ");
 		binaryTree.printLevelOrderTreeTraversalUsingQueue(binaryTree.treeNode);
 
-		System.out.print("\n" + "Diameter or Width of a binary tree >>> " + binaryTree.printDiameterOfBinaryTree(binaryTree.treeNode));
+		System.out.print("\n" + "Diameter or Width of a binary tree >>> "
+				+ binaryTree.printDiameterOfBinaryTree(binaryTree.treeNode));
+
+		System.out.println(
+				"\n" + "Height or Max Depth of the tree >>> " + binaryTree.printHeightTree(binaryTree.treeNode));
 	}
 }
