@@ -203,6 +203,14 @@ public class BinaryTree {
 		}
 	}
 
+	/**
+	 * 
+	 * @author maithiljanardan
+	 * @param treeNode
+	 * @return
+	 * 
+	 * 		This method return the height of the tree
+	 */
 	private int getTreeHeight(TreeNode treeNode) {
 
 		if (treeNode == null) {
