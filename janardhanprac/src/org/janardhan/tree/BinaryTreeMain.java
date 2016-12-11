@@ -44,5 +44,8 @@ public class BinaryTreeMain {
 
 		System.out.println(
 				"\n" + "Height or Max Depth of the tree >>> " + binaryTree.printHeightTree(binaryTree.treeNode));
+
+		System.out.println("\n Copy of the binary tree >> ");
+		binaryTree.printInOrder(binaryTree.cloneBinaryTree(binaryTree.treeNode));
 	}
 }

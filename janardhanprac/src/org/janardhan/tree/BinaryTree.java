@@ -279,4 +279,47 @@ public class BinaryTree {
 		return (Math.max(getTreeHeight(treeNode.leftNode), getTreeHeight(treeNode.rightNode)) + 1);
 	}
 
+	/**
+	 * @author maithiljanardan
+	 * @param
+	 * 
+	 * 
+	 */
+	public TreeNode cloneBinaryTree(TreeNode treeNode) {
+
+		if (treeNode == null) {
+			return treeNode;
+		}
+
+		TreeNode clonedTreeNode = new TreeNode(treeNode.data);
+		clonedTreeNode.leftNode = cloneBinaryTree(treeNode.leftNode);
+		clonedTreeNode.rightNode = cloneBinaryTree(treeNode.rightNode);
+
+		return clonedTreeNode;
+
+	}
+
+	/**
+	 * @author maithiljanardan
+	 * 
+	 *         This method print max width of a tree both using recursive and
+	 *         queue method
+	 */
+
+	/**
+	 * 
+	 * This method print node at k distance from root
+	 */
+	public void printKDistant(TreeNode treeNode, int k) {
+		if (treeNode == null)
+			return;
+		if (k == 0) {
+			System.out.print(treeNode.data + " ");
+			return;
+		} else {
+			printKDistant(treeNode.leftNode, k - 1);
+			printKDistant(treeNode.rightNode, k - 1);
+		}
+	}
+
 }
