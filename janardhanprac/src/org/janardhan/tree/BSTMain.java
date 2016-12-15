@@ -16,11 +16,17 @@ public class BSTMain {
 		binaryST.treeNode.rightNode.rightNode = new TreeNode(14);
 		binaryST.treeNode.rightNode.rightNode.leftNode = new TreeNode(13);
 
-		TreeNode nodeSearch = new TreeNode(89);
+		TreeNode nodeSearch = new TreeNode(14);
 		TreeNode searchSearched = binaryST.searchNode(binaryST.treeNode, nodeSearch.data);
 		if (searchSearched != null)
 			System.out.println("Node Found");
 		else
 			System.out.println("Node not present");
+
+		TreeNode newNode = new TreeNode(12);
+		binaryST.treeNode = binaryST.insertNewNodeInBST(binaryST.treeNode, newNode);
+
+		System.out.println("BST after insertion of a new node in inorder traversal");
+		binaryST.printInOrder(binaryST.treeNode);
 	}
 }
