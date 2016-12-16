@@ -32,8 +32,13 @@ public class BSTMain {
 		binaryST.printInOrder(binaryST.treeNode);
 
 		// Delete a node in BST
-		binaryST.treeNode = binaryST.deleteNodeInBST(binaryST.treeNode, 6);
-		System.out.println("BST after insertion of a new node in inorder traversal");
-		binaryST.printInOrder(binaryST.treeNode);
+		// binaryST.treeNode = binaryST.deleteNodeInBST(binaryST.treeNode, 6);
+		// System.out.println("\n" + "BST after deleting a node in inorder
+		// traversal");
+		// binaryST.printInOrder(binaryST.treeNode);
+
+		System.out.println("\n" + "Inorder Predecessor and Successor of a node in BST");
+		binaryST.printInorderPreAndSuc(binaryST.treeNode, 6);
+
 	}
 }

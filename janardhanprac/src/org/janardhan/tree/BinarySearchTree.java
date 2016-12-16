@@ -101,4 +101,34 @@ public class BinarySearchTree {
 		}
 		return minv;
 	}
+
+	private int maxValue(TreeNode treeNode) {
+		int maxv = treeNode.data;
+		while (treeNode.rightNode != null) {
+			maxv = treeNode.leftNode.data;
+			treeNode = treeNode.rightNode;
+		}
+		return maxv;
+	}
+
+	public void printInorderPreAndSuc(TreeNode treeNode, int key) {
+		int data = printInorderPre(treeNode, key);
+	}
+
+	private int printInorderPre(TreeNode treeNode, int key) {
+
+		if (treeNode == null)
+			return 0;
+
+		if (treeNode.data == key) {
+			treeNode.data = maxValue(treeNode);
+		} else if (key < treeNode.data)
+			printInorderPre(treeNode.leftNode, key);
+
+		else
+			printInorderPre(treeNode.rightNode, key);
+
+		return treeNode.data;
+	}
+
 }
