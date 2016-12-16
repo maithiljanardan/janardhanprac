@@ -5,9 +5,16 @@ public class BinarySearchTree {
 	TreeNode treeNode;
 
 	public BinarySearchTree() {
-		this.treeNode = treeNode;
+
 	}
 
+	/**
+	 * @author jd
+	 * @param treeNode
+	 * @param key
+	 * @return {@link TreeNode}
+	 * 
+	 */
 	public TreeNode searchNode(TreeNode treeNode, int key) {
 
 		if (treeNode == null || treeNode.data == key)
@@ -52,5 +59,46 @@ public class BinarySearchTree {
 		System.out.print(treeNode.data + " ");
 
 		printInOrder(treeNode.rightNode);
+	}
+
+	/**
+	 * @author jd
+	 * @param treeNode
+	 * @return
+	 * 
+	 * 		The important thing to note is, inorder successor is needed only
+	 *         when right child is not empty. In this particular case, inorder
+	 *         successor can be obtained by finding the minimum value in right
+	 *         child of the node.
+	 */
+	public TreeNode deleteNodeInBST(TreeNode treeNode, int key) {
+
+		if (treeNode == null)
+			return treeNode;
+		if (key < treeNode.data)
+			treeNode.leftNode = deleteNodeInBST(treeNode.leftNode, key);
+		else if (key > treeNode.data)
+			treeNode.rightNode = deleteNodeInBST(treeNode.rightNode, key);
+		else {
+
+			if (treeNode.leftNode == null)
+				return treeNode.rightNode;
+			else if (treeNode.rightNode == null)
+				return treeNode.leftNode;
+
+			treeNode.data = minValue(treeNode.rightNode);
+			treeNode.rightNode = deleteNodeInBST(treeNode.rightNode, treeNode.data);
+		}
+		return treeNode;
+	}
+
+	private int minValue(TreeNode treeNode) {
+
+		int minv = treeNode.data;
+		while (treeNode.leftNode != null) {
+			minv = treeNode.leftNode.data;
+			treeNode = treeNode.leftNode;
+		}
+		return minv;
 	}
 }

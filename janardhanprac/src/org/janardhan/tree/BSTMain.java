@@ -6,6 +6,7 @@ public class BSTMain {
 
 		BinarySearchTree binaryST = new BinarySearchTree();
 
+		// Creating a new BST
 		binaryST.treeNode = new TreeNode(8);
 		binaryST.treeNode.leftNode = new TreeNode(3);
 		binaryST.treeNode.rightNode = new TreeNode(10);
@@ -16,16 +17,22 @@ public class BSTMain {
 		binaryST.treeNode.rightNode.rightNode = new TreeNode(14);
 		binaryST.treeNode.rightNode.rightNode.leftNode = new TreeNode(13);
 
-		TreeNode nodeSearch = new TreeNode(14);
-		TreeNode searchSearched = binaryST.searchNode(binaryST.treeNode, nodeSearch.data);
+		// Method to search a node in BST
+		TreeNode searchSearched = binaryST.searchNode(binaryST.treeNode, 14);
 		if (searchSearched != null)
 			System.out.println("Node Found");
 		else
 			System.out.println("Node not present");
 
+		// Inserting a new node in BST
 		TreeNode newNode = new TreeNode(12);
 		binaryST.treeNode = binaryST.insertNewNodeInBST(binaryST.treeNode, newNode);
 
+		System.out.println("BST after insertion of a new node in inorder traversal");
+		binaryST.printInOrder(binaryST.treeNode);
+
+		// Delete a node in BST
+		binaryST.treeNode = binaryST.deleteNodeInBST(binaryST.treeNode, 6);
 		System.out.println("BST after insertion of a new node in inorder traversal");
 		binaryST.printInOrder(binaryST.treeNode);
 	}
