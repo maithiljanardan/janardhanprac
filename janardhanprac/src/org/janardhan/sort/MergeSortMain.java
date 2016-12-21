@@ -30,43 +30,43 @@ public class MergeSortMain {
 
 class MergeSort {
 
-	public void sort(int[] arr, int l, int r) {
+	public void sort(int[] arr, int leftIndex, int rightIndex) {
 
-		int m;
+		int midIndex;
 
 		// Check if left index is less than right index
-		if (l < r) {
+		if (leftIndex < rightIndex) {
 
 			// calculate mid index
-			m = (l + r) / 2;
+			midIndex = (leftIndex + rightIndex) / 2;
 
 			// recursively sort left subarray
-			sort(arr, l, m);
+			sort(arr, leftIndex, midIndex);
 
 			// recursively sort right subarray
-			sort(arr, m + 1, r);
+			sort(arr, midIndex + 1, rightIndex);
 
 			// merge both subarrays
-			merge(arr, l, m, r);
+			merge(arr, leftIndex, midIndex, rightIndex);
 
 		}
 
 	}
 
-	private void merge(int[] arr, int l, int m, int r) {
+	private void merge(int[] arr, int leftIndex, int midIndex, int rightIndex) {
 
-		int n1 = m - l + 1;
-		int n2 = r - m;
+		int sizeLeftSubArray = midIndex - leftIndex + 1;
+		int sizeRightSubArray = rightIndex - midIndex;
 
 		/* Create temp arrays */
-		int L[] = new int[n1];
-		int R[] = new int[n2];
+		int tempLeftSubArray[] = new int[sizeLeftSubArray];
+		int tempRightSubArray[] = new int[sizeRightSubArray];
 
 		/* Copy data to temp arrays */
-		for (int i = 0; i < n1; ++i)
-			L[i] = arr[l + i];
-		for (int j = 0; j < n2; ++j)
-			R[j] = arr[m + 1 + j];
+		for (int i = 0; i < sizeLeftSubArray; ++i)
+			tempLeftSubArray[i] = arr[leftIndex + i];
+		for (int j = 0; j < sizeRightSubArray; ++j)
+			tempRightSubArray[j] = arr[midIndex + 1 + j];
 
 		/* Merge the temp arrays */
 
@@ -74,28 +74,28 @@ class MergeSort {
 		int i = 0, j = 0;
 
 		// Initial index of merged subarry array
-		int k = l;
-		while (i < n1 && j < n2) {
-			if (L[i] <= R[j]) {
-				arr[k] = L[i];
+		int k = leftIndex;
+		while (i < sizeLeftSubArray && j < sizeRightSubArray) {
+			if (tempLeftSubArray[i] <= tempRightSubArray[j]) {
+				arr[k] = tempLeftSubArray[i];
 				i++;
 			} else {
-				arr[k] = R[j];
+				arr[k] = tempRightSubArray[j];
 				j++;
 			}
 			k++;
 		}
 
 		/* Copy remaining elements of L[] if any */
-		while (i < n1) {
-			arr[k] = L[i];
+		while (i < sizeLeftSubArray) {
+			arr[k] = tempLeftSubArray[i];
 			i++;
 			k++;
 		}
 
 		/* Copy remaining elements of L[] if any */
-		while (j < n2) {
-			arr[k] = R[j];
+		while (j < sizeRightSubArray) {
+			arr[k] = tempRightSubArray[j];
 			j++;
 			k++;
 		}
