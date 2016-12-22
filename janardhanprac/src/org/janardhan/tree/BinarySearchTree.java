@@ -102,33 +102,58 @@ public class BinarySearchTree {
 		return minv;
 	}
 
-	private int maxValue(TreeNode treeNode) {
+	private void maxValue(TreeNode treeNode) {
 		int maxv = treeNode.data;
 		while (treeNode.rightNode != null) {
-			maxv = treeNode.leftNode.data;
 			treeNode = treeNode.rightNode;
+			maxv = treeNode.data;
 		}
-		return maxv;
+		System.out.println("Predecessor Node is " + maxv);
 	}
 
 	public void printInorderPreAndSuc(TreeNode treeNode, int key) {
-		int data = printInorderPre(treeNode, key);
+		printInorderPre(treeNode, key);
+		printInorderSuc(treeNode, key);
+
 	}
 
-	private int printInorderPre(TreeNode treeNode, int key) {
+	private void printInorderPre(TreeNode treeNode, int key) {
 
 		if (treeNode == null)
-			return 0;
+			return;
 
 		if (treeNode.data == key) {
-			treeNode.data = maxValue(treeNode);
+			maxValue(treeNode.leftNode);
 		} else if (key < treeNode.data)
 			printInorderPre(treeNode.leftNode, key);
 
 		else
 			printInorderPre(treeNode.rightNode, key);
 
-		return treeNode.data;
+	}
+
+	private void printInorderSuc(TreeNode treeNode, int key) {
+
+		if (treeNode == null)
+			return;
+
+		if (treeNode.data == key) {
+			minValue2(treeNode.rightNode);
+		} else if (key < treeNode.data)
+			printInorderSuc(treeNode.leftNode, key);
+
+		else
+			printInorderSuc(treeNode.rightNode, key);
+
+	}
+
+	private void minValue2(TreeNode treeNode) {
+		int minv = treeNode.data;
+		while (treeNode.leftNode != null) {
+			treeNode = treeNode.leftNode;
+			minv = treeNode.data;
+		}
+		System.out.println("Successor Node is " + minv);
 	}
 
 }

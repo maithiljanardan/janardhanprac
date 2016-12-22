@@ -14,4 +14,9 @@ public class TreeNode {
 		this.data = data;
 		this.leftNode = this.rightNode = null;
 	}
+
+	@Override
+	public String toString() {
+		return "TreeNode = " + data;
+	}
 }
