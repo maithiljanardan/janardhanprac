@@ -156,4 +156,14 @@ public class BinarySearchTree {
 		System.out.println("Successor Node is " + minv);
 	}
 
+
+	public boolean isTreeBST(TreeNode root, int min, int max) {
+
+		if (root == null)
+			return true;
+		if (root.data < min || root.data > max)
+			return false;
+
+		return (isTreeBST(root.leftNode, min, root.data) && isTreeBST(root.rightNode, root.data, max));
+	}
 }

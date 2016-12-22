@@ -1,5 +1,7 @@
 package org.janardhan.tree;
 
+import org.omg.CosNaming.IstringHelper;
+
 public class BSTMain {
 
 	public static void main(String[] args) {
@@ -39,6 +41,11 @@ public class BSTMain {
 
 		System.out.println("\n" + "Inorder Predecessor and Successor of a node in BST");
 		binaryST.printInorderPreAndSuc(binaryST.treeNode, 6);
+
+		if (binaryST.isTreeBST(binaryST.treeNode, Integer.MIN_VALUE, Integer.MAX_VALUE))
+			System.out.println("Tree is a BST");
+		else
+			System.out.println("Tree is not a BST");
 
 	}
 }
