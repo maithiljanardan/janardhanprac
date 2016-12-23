@@ -192,8 +192,13 @@ public class BinarySearchTree {
 	 *         root to their lowest common ancestor.
 	 * 
 	 *         The idea is to recursively traverse in the tree till we get
-	 *         common parent
+	 *         common parent.
 	 * 
+	 * 
+	 *         Time complexity of solution is O(h) where h is height of tree.
+	 *         Also, the above solution requires O(h) extra space in function
+	 *         call stack for recursive function calls. We can avoid extra space
+	 *         using iterative solution.
 	 * 
 	 */
 	public TreeNode getLowestCommonAncestor(TreeNode root, int key1, int key2) {
