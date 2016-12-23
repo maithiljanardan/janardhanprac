@@ -81,5 +81,12 @@ public class BSTMain {
 		// Code to find Lowest Common Ancestor of two given node in a BST ends
 		// here
 
+		// Code to find k-th smallest element in a BST starts here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		binaryST.getkthSmallestElement(binaryST.treeNode, 3);
+
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to find k-th smallest element in a BST ends here
 	}
 }
