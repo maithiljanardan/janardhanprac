@@ -1,5 +1,7 @@
 package org.janardhan.tree;
 
+import java.util.Stack;
+
 public class BinarySearchTree {
 
 	TreeNode treeNode;
@@ -219,4 +221,38 @@ public class BinarySearchTree {
 		// else return root
 		return root;
 	}
+
+	public void getkthSmallestElement(TreeNode treeNode2, int i) {
+
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+
+		int count = 0;
+
+		boolean pushFlag = true;
+
+		TreeNode currentNode = treeNode;
+
+		while (pushFlag) {
+
+			if (currentNode != null) {
+				stack.push(currentNode);
+				currentNode = currentNode.leftNode;
+			} else {
+
+				if (stack.empty()) {
+					pushFlag = false;
+				} else {
+					currentNode = stack.pop();
+					count++;
+					if (count == i) {
+						System.out.println(currentNode.data);
+					}
+					currentNode = currentNode.rightNode;
+				}
+
+			}
+		}
+
+	}
+
 }
