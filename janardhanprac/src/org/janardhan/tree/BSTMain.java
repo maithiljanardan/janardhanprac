@@ -75,7 +75,8 @@ public class BSTMain {
 		// Code to find Lowest Common Ancestor of two given node in a BST starts
 		// here
 		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		
+		TreeNode lcaNode = binaryST.getLowestCommonAncestor(binaryST.treeNode, 4, 7);
+		System.out.println("Lowest Common Ancestor of the given node is " + lcaNode.data);
 		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		// Code to find Lowest Common Ancestor of two given node in a BST ends
 		// here
