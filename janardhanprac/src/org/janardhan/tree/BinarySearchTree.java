@@ -198,15 +198,20 @@ public class BinarySearchTree {
 	 */
 	public TreeNode getLowestCommonAncestor(TreeNode root, int key1, int key2) {
 
+		// If root is null return root
 		if (root == null)
 			return root;
 
+		// If both keys are less than root, recursively traverse left subtree
 		if (root.data > key1 && root.data > key2)
 			return getLowestCommonAncestor(root.leftNode, key1, key2);
 
+		// If both keys are gretear than root, recursively traverse right
+		// subtree
 		if (root.data < key1 && root.data < key2)
 			return getLowestCommonAncestor(root.rightNode, key1, key2);
 
+		// else return root
 		return root;
 	}
 }
