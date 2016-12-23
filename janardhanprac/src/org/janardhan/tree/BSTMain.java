@@ -1,7 +1,5 @@
 package org.janardhan.tree;
 
-import org.omg.CosNaming.IstringHelper;
-
 public class BSTMain {
 
 	public static void main(String[] args) {
@@ -19,33 +17,70 @@ public class BSTMain {
 		binaryST.treeNode.rightNode.rightNode = new TreeNode(14);
 		binaryST.treeNode.rightNode.rightNode.leftNode = new TreeNode(13);
 
-		// Method to search a node in BST
+		// Code to search a node in BST starts here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 		TreeNode searchSearched = binaryST.searchNode(binaryST.treeNode, 14);
 		if (searchSearched != null)
 			System.out.println("Node Found");
 		else
 			System.out.println("Node not present");
 
-		// Inserting a new node in BST
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to search a node in BST ends here
+
+		// Code to insert a node in BST starts here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 		TreeNode newNode = new TreeNode(12);
 		binaryST.treeNode = binaryST.insertNewNodeInBST(binaryST.treeNode, newNode);
 
 		System.out.println("BST after insertion of a new node in inorder traversal");
 		binaryST.printInOrder(binaryST.treeNode);
 
-		// Delete a node in BST
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to insert a node in BST ends here
+
+		// Code to delete a node in BST starts here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 		// binaryST.treeNode = binaryST.deleteNodeInBST(binaryST.treeNode, 6);
 		// System.out.println("\n" + "BST after deleting a node in inorder
 		// traversal");
 		// binaryST.printInOrder(binaryST.treeNode);
 
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to delete a node in BST ends here
+
+		// Code to find Predecessor and Successor of a node starts here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 		System.out.println("\n" + "Inorder Predecessor and Successor of a node in BST");
 		binaryST.printInorderPreAndSuc(binaryST.treeNode, 6);
+
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to find Predecessor and Successor of a node ends here
+
+		// Code to find whether a tree is a BST or not starts here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 		if (binaryST.isTreeBST(binaryST.treeNode, Integer.MIN_VALUE, Integer.MAX_VALUE))
 			System.out.println("Tree is a BST");
 		else
 			System.out.println("Tree is not a BST");
+
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to find whether a tree is a BST or not ends here
+
+		// Code to find Lowest Common Ancestor of two given node in a BST starts
+		// here
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		TreeNode lcaNode = binaryST.getLowestCommonAncestor(binaryST.treeNode, 4, 7);
+		System.out.println("\n Lowest common Ancestor for the given node is " + lcaNode.data);
+		// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		// Code to find Lowest Common Ancestor of two given node in a BST ends
+		// here
 
 	}
 }

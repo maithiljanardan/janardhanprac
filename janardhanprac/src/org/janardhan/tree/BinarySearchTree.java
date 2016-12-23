@@ -147,6 +147,11 @@ public class BinarySearchTree {
 
 	}
 
+	/***
+	 * @return
+	 * @see String
+	 * @param treeNode
+	 */
 	private void minValue2(TreeNode treeNode) {
 		int minv = treeNode.data;
 		while (treeNode.leftNode != null) {
@@ -156,7 +161,6 @@ public class BinarySearchTree {
 		System.out.println("Successor Node is " + minv);
 	}
 
-
 	public boolean isTreeBST(TreeNode root, int min, int max) {
 
 		if (root == null)
@@ -165,5 +169,44 @@ public class BinarySearchTree {
 			return false;
 
 		return (isTreeBST(root.leftNode, min, root.data) && isTreeBST(root.rightNode, root.data, max));
+	}
+
+	/**
+	 * @author jd
+	 * @param root
+	 * @param key1
+	 * @param key2
+	 * @return
+	 * 
+	 * 		This method gets the Lowest Common Ancestor. The lowest common
+	 *         ancestor between two nodes n1 and n2 is defined as the lowest
+	 *         node in T that has both n1 and n2 as descendants (where we allow
+	 *         a node to be a descendant of itself).
+	 * 
+	 * 
+	 *         Computation of lowest common ancestors may be useful, for
+	 *         instance, as part of a procedure for determining the distance
+	 *         between pairs of nodes in a tree: the distance from n1 to n2 can
+	 *         be computed as the distance from the root to n1, plus the
+	 *         distance from the root to n2, minus twice the distance from the
+	 *         root to their lowest common ancestor.
+	 * 
+	 *         The idea is to recursively traverse in the tree till we get
+	 *         common parent
+	 * 
+	 * 
+	 */
+	public TreeNode getLowestCommonAncestor(TreeNode root, int key1, int key2) {
+
+		if (root == null)
+			return root;
+
+		if (root.data > key1 && root.data > key2)
+			return getLowestCommonAncestor(root.leftNode, key1, key2);
+
+		if (root.data < key1 && root.data < key2)
+			return getLowestCommonAncestor(root.rightNode, key1, key2);
+
+		return root;
 	}
 }
