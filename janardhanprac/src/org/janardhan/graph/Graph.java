@@ -2,6 +2,7 @@ package org.janardhan.graph;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
 
@@ -21,6 +22,34 @@ public class Graph {
 
 	void addEdge(int v, int w) {
 		adj[v].add(w);
+	}
+
+	// Driver method
+	public static void main(String[] args) {
+		Graph graph = new Graph(6);
+		// graph.addEdge(0, 1);
+		// graph.addEdge(0, 2);
+		// graph.addEdge(1, 2);
+		// graph.addEdge(2, 0);
+		// graph.addEdge(2, 3);
+		// graph.addEdge(3, 3);
+
+		graph.addEdge(5, 0);
+		graph.addEdge(5, 2);
+		graph.addEdge(4, 0);
+		graph.addEdge(4, 1);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 1);
+
+		System.out.print("Breadth-First-Traversal for the graph is >> ");
+		graph.BFS(5);
+
+		System.out.print("\nDepth-First-Traversal for the graph is >> ");
+		graph.DFS(5);
+
+		System.out.print("\nTopological Sort for the graph is >> ");
+		graph.topologicalSort();
+
 	}
 
 	private void BFS(int source) {
@@ -78,21 +107,41 @@ public class Graph {
 		}
 	}
 
-	// Driver method
-	public static void main(String[] args) {
-		Graph graph = new Graph(4);
-		graph.addEdge(0, 1);
-		graph.addEdge(0, 2);
-		graph.addEdge(1, 2);
-		graph.addEdge(2, 0);
-		graph.addEdge(2, 3);
-		graph.addEdge(3, 3);
+	private void topologicalSort() {
 
-		System.out.print("Breadth-First-Traversal for the tree is >> ");
-		graph.BFS(2);
+		// Label all vertices as unvisited
+		boolean[] visited = new boolean[V];
 
-		System.out.print("\nDepth-First-Traversal for the tree is >> ");
-		graph.DFS(2);
+		Stack<Integer> stack = new Stack<>();
+
+		for (int i = 0; i < V; i++) {
+
+			// If the node is not visited, visit it
+			if (!visited[i])
+				topologicalSortUtil(i, visited, stack);
+		}
+
+		// Finally pop all nodes from the stack
+		while (!stack.isEmpty()) {
+			System.out.print(stack.pop() + " ");
+		}
+	}
+
+	private void topologicalSortUtil(int source, boolean[] visited, Stack<Integer> stack) {
+
+		// Mark node as visited
+		visited[source] = true;
+
+		// Get the adjacent node for the visiting node and recur for the nodes
+		Iterator<Integer> it = adj[source].listIterator();
+
+		while (it.hasNext()) {
+			int i = it.next();
+			if (!visited[i])
+				topologicalSortUtil(i, visited, stack);
+		}
+
+		stack.push(source);
 	}
 
 }
