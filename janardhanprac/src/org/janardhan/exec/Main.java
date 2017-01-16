@@ -14,11 +14,10 @@ public class Main {
 		OutputStream outputStream = System.out;
 		InputParser in = new InputParser(inputStream);
 		PrintWriter out = new PrintWriter(outputStream);
-		//MobileIron solver = new MobileIron();
-		// int testCases = in.nextInt();
-		// for (int i = 1; i <= testCases; i++)
-		//laptop se
-		//solver.solve(in, out);
+		OnSizedGame solver = new OnSizedGame();
+		int testCases = in.nextInt();
+		for (int i = 1; i <= testCases; i++)
+			solver.solve(in, out);
 		out.close();
 	}
 }

@@ -1,13 +1,9 @@
 package org.janardhan.exec;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Scanner;
 
 import org.janardhan.datastructure.StudentComparable;
-import org.janardhan.functions.MathFunctions;
-import org.janardhan.functions.StringFunctions;
 
 public class ScannerInput {
 
