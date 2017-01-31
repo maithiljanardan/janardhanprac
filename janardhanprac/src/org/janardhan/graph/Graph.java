@@ -20,6 +20,10 @@ public class Graph {
 		}
 	}
 
+	/*
+	 * In case of undirected graph a back edge also needs to be added ie.
+	 * adj[w].add(v)
+	 */
 	void addEdge(int v, int w) {
 		adj[v].add(w);
 	}
@@ -210,11 +214,59 @@ public class Graph {
 				if (isCyclicUtil(i, visited, recStack)) {
 					return true;
 				}
-			} else if (recStack[i]) {
+			}
+			// If the node is visited and present in the recursion stack that
+			// means its the part of the cycle
+			else if (recStack[i]) {
 				return true;
 			}
 		}
-		recStack[source] = false; // remove the vertex from recurstion stack
+		recStack[source] = false; // remove the vertex from recursion stack
+		return false;
+	}
+
+	// A recursive function that uses visited[] and parent to detect
+	// cycle in subgraph reachable from vertex v.
+	private boolean isCyclicUtilUndirectedGraph(int v, Boolean visited[], int parent) {
+		// Mark the current node as visited
+		visited[v] = true;
+		Integer i;
+
+		// Recur for all the vertices adjacent to this vertex
+		Iterator<Integer> it = adj[v].iterator();
+		while (it.hasNext()) {
+			i = it.next();
+
+			// If an adjacent is not visited, then recur for that
+			// adjacent
+			if (!visited[i]) {
+				if (isCyclicUtilUndirectedGraph(i, visited, v))
+					return true;
+			}
+
+			// If an adjacent is visited and not parent of current
+			// vertex, then there is a cycle.
+			else if (i != parent)
+				return true;
+		}
+		return false;
+	}
+
+	// Returns true if the graph contains a cycle, else false.
+	private boolean isCyclicUnDirectedGraph() {
+		// Mark all the vertices as not visited and not part of
+		// recursion stack
+		Boolean visited[] = new Boolean[V];
+		for (int i = 0; i < V; i++)
+			visited[i] = false;
+
+		// Call the recursive helper function to detect cycle in
+		// different DFS trees
+		for (int u = 0; u < V; u++)
+			if (!visited[u]) // Don't recur for u if already visited
+				if (isCyclicUtilUndirectedGraph(u, visited, -1))
+					return true;
+
 		return false;
 	}
 }
