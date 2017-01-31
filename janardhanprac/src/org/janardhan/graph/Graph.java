@@ -168,7 +168,53 @@ public class Graph {
 	}
 
 	private boolean isCyclc() {
-		// TODO Auto-generated method stub
+
+		// Mark all the vertices as not visited and not part of recursion stack
+		boolean[] visited = new boolean[V];
+		boolean[] recStack = new boolean[V];
+
+		for (int i = 0; i < V; i++) {
+			if (!visited[i])
+				if (isCyclicUtil(i, visited, recStack)) {
+					return true;
+				}
+		}
+
+		return false;
+	}
+
+	/**
+	 * To detect a back edge, we can keep track of vertices currently in
+	 * recursion stack of function for DFS traversal. If we reach a vertex that
+	 * is already in the recursion stack, then there is a cycle in the tree
+	 * 
+	 * @param source
+	 * @param visited
+	 * @param recStack
+	 * @return
+	 */
+	private boolean isCyclicUtil(int source, boolean[] visited, boolean[] recStack) {
+
+		// Marks root as visited and add to recursion stack
+		visited[source] = true;
+		recStack[source] = true;
+
+		// Get the adjacent node for the visiting node and recur for the nodes
+		Iterator<Integer> it = adj[source].listIterator();
+
+		while (it.hasNext()) {
+
+			int i = it.next();
+
+			if (!visited[i]) {
+				if (isCyclicUtil(i, visited, recStack)) {
+					return true;
+				}
+			} else if (recStack[i]) {
+				return true;
+			}
+		}
+		recStack[source] = false; // remove the vertex from recurstion stack
 		return false;
 	}
 }
