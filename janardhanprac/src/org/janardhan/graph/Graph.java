@@ -68,6 +68,11 @@ public class Graph {
 		System.out.print("\nTopological Sort for the graph is >> ");
 		graph.topologicalSort();
 
+		if (graph.isCyclc())
+			System.out.println("\n Graph is cyclic");
+		else
+			System.out.println("\n Graph is acyclic");
+
 	}
 
 	private void BFS(int source) {
@@ -162,4 +167,8 @@ public class Graph {
 		stack.push(source);
 	}
 
+	private boolean isCyclc() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
