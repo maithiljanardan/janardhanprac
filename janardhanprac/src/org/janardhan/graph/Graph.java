@@ -45,23 +45,23 @@ public class Graph {
 		/**
 		 * For Topological Sort
 		 */
-		// graph.addEdge(5, 0);
-		// graph.addEdge(5, 2);
-		// graph.addEdge(4, 0);
-		// graph.addEdge(4, 1);
-		// graph.addEdge(2, 3);
-		// graph.addEdge(3, 1);
+		graph.addEdge(5, 0);
+		graph.addEdge(5, 2);
+		graph.addEdge(4, 0);
+		graph.addEdge(4, 1);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 1);
 
 		/**
 		 * For Cycle detection in Directed Graph
 		 */
 
-		graph.addEdge(0, 1);
-		graph.addEdge(0, 2);
-		graph.addEdge(1, 2);
-		graph.addEdge(2, 0);
-		graph.addEdge(2, 3);
-		graph.addEdge(3, 3);
+		// graph.addEdge(0, 1);
+		// graph.addEdge(0, 2);
+		// graph.addEdge(1, 2);
+		// graph.addEdge(2, 0);
+		// graph.addEdge(2, 3);
+		// graph.addEdge(3, 3);
 
 		System.out.print("Breadth-First-Traversal for the graph is >> ");
 		graph.BFS(5);
