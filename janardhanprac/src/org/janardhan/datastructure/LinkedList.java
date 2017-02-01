@@ -187,10 +187,27 @@ public class LinkedList<T> implements Iterable<T> {
 		return 1 + getSize(node.getNextNode());
 	}
 
+	/**
+	 * Recursive implementation of searching a node
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public int searchNode(SinglyListNode<T> node, T data) {
+
+		// Code to prevent the loop to go into eternity still need to be written
+		if (node == null)
+			node = head;
+		if (node.getData() == data)
+			return 1;
+		return 1 + searchNode(node.getNextNode(), data);
+
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 
-		return new LinkedListIterator();
+		return new LinkedListIterator<T>();
 	}
 
 	private class LinkedListIterator<T> implements Iterator<T> {
