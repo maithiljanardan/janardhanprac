@@ -16,8 +16,14 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	/**
+	 * This method inserts a new nod at the beginning of the list
+	 * 
+	 * @param data
+	 */
 	public void insertAtBeginning(T data) {
 
+		// if no node is present create a new node and mark it head node
 		if (head == null) {
 			SinglyListNode<T> node = new SinglyListNode<T>();
 			node.setData(data);
@@ -25,13 +31,17 @@ public class LinkedList<T> implements Iterable<T> {
 			head = node;
 			tail = node;
 
-		} else {
+		}
+		// Create a new node and point it to head and then make this node head
+		// node
+		else {
 			SinglyListNode<T> node = new SinglyListNode<T>();
 			node.setData(data);
 			node.setNextNode(head);
 			head = node;
 		}
-		size++;
+
+		size++; // increment size
 	}
 
 	public void insertAtEnd(T data) {
@@ -102,7 +112,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 		SinglyListNode<T> tempNode = head;
 		head = tempNode.getNextNode();
-		
+
 		return tempNode.getData();
 	}
 
