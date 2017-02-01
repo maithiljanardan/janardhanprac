@@ -44,8 +44,14 @@ public class LinkedList<T> implements Iterable<T> {
 		size++; // increment size
 	}
 
+	/**
+	 * This method inserts a new node at the end of the list
+	 * 
+	 * @param data
+	 */
 	public void insertAtEnd(T data) {
 
+		// if list is empty, create a new node and mark it as head node
 		if (head == null) {
 			SinglyListNode<T> node = new SinglyListNode<T>();
 			node.setData(data);
@@ -62,6 +68,12 @@ public class LinkedList<T> implements Iterable<T> {
 		size++;
 	}
 
+	/**
+	 * This method insets a new node at some position
+	 * 
+	 * @param position
+	 * @param data
+	 */
 	public void insertAtPosition(int position, T data) {
 
 		SinglyListNode<T> node = new SinglyListNode<T>();
@@ -91,6 +103,11 @@ public class LinkedList<T> implements Iterable<T> {
 		size++;
 	}
 
+	/**
+	 * Delete a node at some position
+	 * 
+	 * @param position
+	 */
 	public void deleteAtPosition(int position) {
 
 		SinglyListNode<T> tempNode = head;
@@ -108,6 +125,11 @@ public class LinkedList<T> implements Iterable<T> {
 		size--;
 	}
 
+	/**
+	 * deleting a starting node
+	 * 
+	 * @return
+	 */
 	public T deleteAtBeginning() {
 
 		SinglyListNode<T> tempNode = head;
@@ -116,6 +138,9 @@ public class LinkedList<T> implements Iterable<T> {
 		return tempNode.getData();
 	}
 
+	/**
+	 * @author jd
+	 */
 	public void checkIfEmpty() {
 		if (this.size == 0) {
 			System.out.println("List is empty");
@@ -129,6 +154,9 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	/**
+	 * this method print a list
+	 */
 	public void printList() {
 
 		System.out.println("Size of the list is >>>> " + this.size);
@@ -138,6 +166,25 @@ public class LinkedList<T> implements Iterable<T> {
 			System.out.print(t + "-->");
 		}
 		System.out.println();
+	}
+
+	/**
+	 * wrapper method to get the size of the head
+	 * 
+	 * @return
+	 */
+	public int getSize() {
+		return getSize(head);
+	}
+
+	/**
+	 * Iterative version of getting list size
+	 * 
+	 */
+	private int getSize(SinglyListNode<T> node) {
+		if (node == null)
+			return 0;
+		return 1 + getSize(node.getNextNode());
 	}
 
 	@Override
