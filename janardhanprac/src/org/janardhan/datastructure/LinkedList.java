@@ -288,6 +288,58 @@ public class LinkedList<T> implements Iterable<T> {
 		}
 	}
 
+	/*
+	 * Function to get the nth node from the last of a linked list
+	 */
+	void printNthFromLast(int n) {
+
+		int len = 0;
+
+		SinglyListNode<T> temp = head;
+
+		// 1) count the number of nodes in Linked List
+		while (temp != null) {
+
+			temp = temp.getNextNode();
+			len++;
+		}
+
+		// check if value of n is not more than length of
+		// the linked list
+		if (len < n)
+			return;
+
+		temp = head;
+
+		// 2) get the (n-len+1)th node from the begining
+		for (int i = 1; i < len - n + 1; i++)
+			temp = temp.getNextNode();
+
+		System.out.println(temp.getData());
+	}
+
+	/* Function deletes the entire linked list */
+	void deleteList() {
+		head = null;
+	}
+
+	/*
+	 * Counts the no. of occurences of a node (search_for) in a linked list
+	 * (head)
+	 */
+	public int count(T search_for) {
+
+		SinglyListNode<T> current = head;
+		int count = 0;
+		while (current != null) {
+			if (current.getData() == search_for)
+				count++;
+			current = current.getNextNode();
+		}
+		return count;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
 
