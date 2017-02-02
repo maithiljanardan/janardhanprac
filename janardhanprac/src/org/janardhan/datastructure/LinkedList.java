@@ -365,6 +365,7 @@ public class LinkedList<T> implements Iterable<T> {
 
 		if (node.getNextNode() == null)
 			return;
+
 		reverseRecUtil(node.getNextNode());
 
 		currentNode.getNextNode().setNextNode(currentNode);
@@ -376,6 +377,28 @@ public class LinkedList<T> implements Iterable<T> {
 
 	public void reverseRecursively() {
 		reverseRecUtil(head);
+	}
+
+	/**
+	 * Floyd’s Cycle-Finding Algorithm
+	 * 
+	 */
+	public int detectLoop() {
+
+		SinglyListNode<T> slow_p = head, fast_p = head;
+
+		while (slow_p != null && fast_p != null && fast_p.getNextNode() != null) {
+
+			slow_p = slow_p.getNextNode();
+			fast_p = fast_p.getNextNode().getNextNode();
+
+			if (slow_p == fast_p) {
+
+				System.out.println("Found loop");
+				return 1;
+			}
+		}
+		return 0;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////
