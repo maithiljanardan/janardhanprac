@@ -1,6 +1,8 @@
 package org.janardhan.datastructure;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LinkedList<T> implements Iterable<T> {
@@ -58,7 +60,8 @@ public class LinkedList<T> implements Iterable<T> {
 			node.setNextNode(null);
 			head = node;
 			tail = node;
-		} else {
+		}
+		else {
 			SinglyListNode<T> node = new SinglyListNode<T>();
 			node.setData(data);
 			node.setNextNode(null);
@@ -89,7 +92,8 @@ public class LinkedList<T> implements Iterable<T> {
 		if (position == 1) {
 			node.setNextNode(head);
 			head = node;
-		} else {
+		}
+		else {
 
 			while (pointer < position - 1 && pointer < size) {
 
@@ -115,7 +119,8 @@ public class LinkedList<T> implements Iterable<T> {
 
 		if (position == 1) {
 			head = tempNode.getNextNode();
-		} else {
+		}
+		else {
 			for (int i = 1; i < position; i++) {
 				previousNode = tempNode;
 				tempNode = tempNode.getNextNode();
@@ -144,7 +149,8 @@ public class LinkedList<T> implements Iterable<T> {
 	public void checkIfEmpty() {
 		if (this.size == 0) {
 			System.out.println("List is empty");
-		} else {
+		}
+		else {
 			System.out.println("List is not empty");
 		}
 	}
@@ -401,6 +407,41 @@ public class LinkedList<T> implements Iterable<T> {
 		return 0;
 	}
 
+	/*
+	 * Takes two lists sorted in increasing order, and splices their nodes
+	 * together to make one big sorted list which is returned.
+	 */
+	public List<T> mergeSortedList(LinkedList<T> listA, LinkedList<T> listB) {
+
+		// A dummy node
+		SinglyListNode<T> dummyNode = new SinglyListNode<>();
+
+		// tail points to the last result node
+		SinglyListNode<T> tailNode = dummyNode;
+
+		// so tail->next is the place to add new nodes to the result.
+		dummyNode.setNextNode(null);
+
+		while (true) {
+
+			if (listA == null) {
+				tailNode.setNextNode(listB.head);
+				break;
+			}
+			else if (listB == null) {
+				tailNode.setNextNode(listA.head);
+				break;
+			}
+
+			if (listA.head.getData() <= listB.head.getData()) {
+
+			}
+		}
+
+		return listB;
+
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
@@ -426,7 +467,8 @@ public class LinkedList<T> implements Iterable<T> {
 		public T next() {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
-			} else {
+			}
+			else {
 				T data = nextNode.getData();
 				nextNode = nextNode.getNextNode();
 				return data;
