@@ -339,6 +339,24 @@ public class LinkedList<T> implements Iterable<T> {
 		return count;
 	}
 
+	/* Function to reverse the linked list iteratively */
+	public SinglyListNode<T> reverse(SinglyListNode<T> node) {
+
+		SinglyListNode<T> prev = null;
+		SinglyListNode<T> current = node;
+		SinglyListNode<T> next = null;
+
+		while (current != null) {
+
+			next = current.getNextNode();
+			current.setNextNode(prev);
+			prev = current;
+			current = next;
+		}
+		node = prev;
+		return node;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
