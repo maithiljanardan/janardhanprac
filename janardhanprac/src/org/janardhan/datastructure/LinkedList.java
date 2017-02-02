@@ -204,6 +204,51 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	/*
+	 * Function to swap Nodes x and y in linked list by changing links
+	 */
+	public void swapNodes(T x, T y) {
+
+		// Nothing to do if x and y are same
+		if (x == y)
+			return;
+
+		// Search for x (keep track of prevX and CurrX)
+		SinglyListNode<T> prevX = null, currX = head;
+		while (currX != null && currX.getData() != x) {
+			prevX = currX;
+			currX = currX.getNextNode();
+		}
+
+		// Search for y (keep track of prevY and currY)
+		SinglyListNode<T> prevY = null, currY = head;
+		while (currY != null && currY.getData() != y) {
+			prevY = currY;
+			currY = currY.getNextNode();
+		}
+
+		// If either x or y is not present, nothing to do
+		if (currX == null || currY == null)
+			return;
+
+		// If x is not head of linked list
+		if (prevX != null)
+			prevX.setNextNode(currY);
+		else // make y the new head
+			head = currY;
+
+		// If y is not head of linked list
+		if (prevY != null)
+			prevY.setNextNode(currX);
+		else // make x the new head
+			head = currX;
+
+		// Swap next pointers
+		SinglyListNode<T> temp = currX.getNextNode();
+		currX.setNextNode(currY.getNextNode());
+		currY.setNextNode(temp);
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 
