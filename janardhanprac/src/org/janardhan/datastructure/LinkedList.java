@@ -249,6 +249,27 @@ public class LinkedList<T> implements Iterable<T> {
 		currY.setNextNode(temp);
 	}
 
+	/* Takes index as argument and return data at index */
+	public int GetNth(int index) {
+		SinglyListNode<T> current = head;
+		int count = 0; /*
+						 * index of Node we are currently looking at
+						 */
+		while (current != null) {
+			if (count == index)
+				return (int) current.getData();
+			count++;
+			current = current.getNextNode();
+		}
+
+		/*
+		 * if we get to this line, the caller was asking for a non-existent
+		 * element so we assert fail
+		 */
+		assert (false);
+		return 0;
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 
