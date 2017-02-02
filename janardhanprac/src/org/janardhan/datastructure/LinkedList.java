@@ -489,6 +489,7 @@ public class LinkedList<T> implements Iterable<T> {
 	 * @param newNode
 	 */
 	public void insertIntoSortedList(SinglyListNode<T> headNode, SinglyListNode<T> newNode) {
+
 		SinglyListNode<T> currentNode;
 
 		/* Special case for the head end */
@@ -497,11 +498,14 @@ public class LinkedList<T> implements Iterable<T> {
 			headNode = newNode;
 		}
 		else {
+
 			/* Locate the node before the point of insertion */
 			currentNode = headNode;
+
 			while (currentNode.getNextNode() != null && (int) currentNode.getNextNode().getData() < (int) newNode.getData()) {
 				currentNode = currentNode.getNextNode();
 			}
+
 			newNode.setNextNode(currentNode.getNextNode());
 			currentNode.setNextNode(newNode);
 		}
