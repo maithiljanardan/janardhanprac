@@ -270,6 +270,24 @@ public class LinkedList<T> implements Iterable<T> {
 		return 0;
 	}
 
+	/* Function to print middle of linked list */
+	void printMiddle() {
+
+		SinglyListNode<T> slow_ptr = head;
+		SinglyListNode<T> fast_ptr = head;
+
+		if (head != null) {
+
+			while (fast_ptr != null && fast_ptr.getNextNode() != null) {
+
+				fast_ptr = fast_ptr.getNextNode().getNextNode();
+				slow_ptr = slow_ptr.getNextNode();
+			}
+
+			System.out.println("The middle element is [" + slow_ptr.getData() + "] \n");
+		}
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 
