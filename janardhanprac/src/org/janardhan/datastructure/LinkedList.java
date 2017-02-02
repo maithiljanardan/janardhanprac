@@ -451,6 +451,38 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	/**
+	 * 
+	 * @param nodeA
+	 *            this is the head node of list A
+	 * @param nodeB
+	 *            this is the head node of list B
+	 * @return
+	 */
+	public SinglyListNode<T> mergeSortedListRecursively(SinglyListNode<T> nodeA, SinglyListNode<T> nodeB) {
+
+		SinglyListNode<T> result = new SinglyListNode<>();
+
+		// If listA is empty result is listB
+		if (nodeA == null) {
+			return nodeB;
+		}
+		else if (nodeB == null) {
+			return nodeA;
+		}
+
+		// recur
+		if ((int) nodeA.getData() <= (int) nodeB.getData()) {
+			result = nodeA;
+			result.setNextNode(mergeSortedListRecursively(nodeA.getNextNode(), nodeB));
+		}
+		else {
+			result = nodeB;
+			result.setNextNode(mergeSortedListRecursively(nodeA, nodeB.getNextNode()));
+		}
+		return result;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
