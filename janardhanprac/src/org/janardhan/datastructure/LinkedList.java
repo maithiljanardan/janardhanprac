@@ -411,7 +411,7 @@ public class LinkedList<T> implements Iterable<T> {
 	 * Takes two lists sorted in increasing order, and splices their nodes
 	 * together to make one big sorted list which is returned.
 	 */
-	public List<T> mergeSortedList(LinkedList<T> listA, LinkedList<T> listB) {
+	public SinglyListNode<T> mergeSortedList(LinkedList<T> listA, LinkedList<T> listB) {
 
 		// A dummy node
 		SinglyListNode<T> dummyNode = new SinglyListNode<>();
@@ -433,12 +433,22 @@ public class LinkedList<T> implements Iterable<T> {
 				break;
 			}
 
-			if (listA.head.getData() <= listB.head.getData()) {
-
+			if ((int) listA.head.getData() <= (int) listB.head.getData()) {
+				moveNode(tailNode.getNextNode(), listA.head);
 			}
+			else {
+				moveNode(tailNode.getNextNode(), listB.head);
+			}
+
+			tailNode = tailNode.getNextNode();
 		}
 
-		return listB;
+		return dummyNode.getNextNode();
+
+	}
+
+	private void moveNode(SinglyListNode<T> nextNode, SinglyListNode<T> head2) {
+		// TODO Auto-generated method stub
 
 	}
 
