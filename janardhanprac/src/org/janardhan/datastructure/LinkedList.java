@@ -483,6 +483,30 @@ public class LinkedList<T> implements Iterable<T> {
 		return result;
 	}
 
+	/**
+	 * @author jd
+	 * @param headNode
+	 * @param newNode
+	 */
+	public void insertIntoSortedList(SinglyListNode<T> headNode, SinglyListNode<T> newNode) {
+		SinglyListNode<T> currentNode;
+
+		/* Special case for the head end */
+		if (headNode == null || (int) headNode.getData() >= (int) newNode.getData()) {
+			newNode.setNextNode(headNode);
+			headNode = newNode;
+		}
+		else {
+			/* Locate the node before the point of insertion */
+			currentNode = headNode;
+			while (currentNode.getNextNode() != null && (int) currentNode.getNextNode().getData() < (int) newNode.getData()) {
+				currentNode = currentNode.getNextNode();
+			}
+			newNode.setNextNode(currentNode.getNextNode());
+			currentNode.setNextNode(newNode);
+		}
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
