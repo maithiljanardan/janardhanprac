@@ -357,6 +357,27 @@ public class LinkedList<T> implements Iterable<T> {
 		return node;
 	}
 
+	public void reverseRecUtil(SinglyListNode<T> node) {
+
+		if (node == null)
+			return;
+		SinglyListNode<T> currentNode = node;
+
+		if (node.getNextNode() == null)
+			return;
+		reverseRecUtil(node.getNextNode());
+
+		currentNode.getNextNode().setNextNode(currentNode);
+
+		currentNode.setNextNode(null);
+
+		node = currentNode.getNextNode();
+	}
+
+	public void reverseRecursively() {
+		reverseRecUtil(head);
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
