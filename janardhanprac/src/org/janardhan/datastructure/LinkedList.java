@@ -416,39 +416,38 @@ public class LinkedList<T> implements Iterable<T> {
 		// A dummy node
 		SinglyListNode<T> dummyNode = new SinglyListNode<>();
 
-		// tail points to the last result node
-		SinglyListNode<T> tailNode = dummyNode;
-
-		// so tail->next is the place to add new nodes to the result.
-		dummyNode.setNextNode(null);
-
 		while (true) {
 
 			if (listA == null) {
-				tailNode.setNextNode(listB.head);
+				dummyNode.setNextNode(listB.head);
 				break;
 			}
 			else if (listB == null) {
-				tailNode.setNextNode(listA.head);
+				dummyNode.setNextNode(listA.head);
 				break;
 			}
 
 			if ((int) listA.head.getData() <= (int) listB.head.getData()) {
-				moveNode(tailNode.getNextNode(), listA.head);
+				moveNode(dummyNode, listA.head);
 			}
 			else {
-				moveNode(tailNode.getNextNode(), listB.head);
+				moveNode(dummyNode, listB.head);
 			}
 
-			tailNode = tailNode.getNextNode();
+			dummyNode = dummyNode.getNextNode();
 		}
 
 		return dummyNode.getNextNode();
 
 	}
 
-	private void moveNode(SinglyListNode<T> nextNode, SinglyListNode<T> head2) {
-		// TODO Auto-generated method stub
+	/**
+	 * write code to add node to the result list
+	 * 
+	 * @param destNode
+	 * @param sourceNode
+	 */
+	private void moveNode(SinglyListNode<T> destNode, SinglyListNode<T> sourceNode) {
 
 	}
 
