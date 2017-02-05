@@ -511,6 +511,23 @@ public class LinkedList<T> implements Iterable<T> {
 		}
 	}
 
+	/**
+	 * Function to print reverse of linked list
+	 * 
+	 * @author jd
+	 * @param head
+	 */
+	public void printReverse(SinglyListNode<T> head) {
+		if (head == null)
+			return;
+
+		// print list of head node
+		printReverse(head.getNextNode());
+
+		// After everything else is printed
+		System.out.print(head.getData() + " ");
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
