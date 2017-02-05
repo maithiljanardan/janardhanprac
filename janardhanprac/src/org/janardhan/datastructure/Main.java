@@ -59,14 +59,15 @@ public class Main {
 				linkedList.showSize();
 				break;
 			case 'G':
-				int pos = linkedList.searchNode(null,5);
+				int pos = linkedList.searchNode(null, 5);
 				System.out.println("Node found at position " + pos);
 				break;
 			default:
 				break;
 			}
 			System.out.println("Do you with to continue??");
-		} while (inputParser.nextChar() == 'Y');
+		}
+		while (inputParser.nextChar() == 'Y');
 
 		printWriter.close();
 	}

@@ -26,7 +26,8 @@ public class SinglyListNode<T> implements Comparable<T> {
 
 		if (element == this.data) {
 			return 1;
-		} else {
+		}
+		else {
 			return 0;
 		}
 
@@ -53,12 +54,14 @@ public class SinglyListNode<T> implements Comparable<T> {
 		if (data == null) {
 			if (other.data != null)
 				return false;
-		} else if (!data.equals(other.data))
+		}
+		else if (!data.equals(other.data))
 			return false;
 		if (nextNode == null) {
 			if (other.nextNode != null)
 				return false;
-		} else if (!nextNode.equals(other.nextNode))
+		}
+		else if (!nextNode.equals(other.nextNode))
 			return false;
 		return true;
 	}
