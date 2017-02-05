@@ -517,15 +517,15 @@ public class LinkedList<T> implements Iterable<T> {
 	 * @author jd
 	 * @param head
 	 */
-	public void printReverse(SinglyListNode<T> head) {
-		if (head == null)
+	public void printReverse(SinglyListNode<T> node) {
+		if (node == null)
 			return;
 
 		// print list of head node
-		printReverse(head.getNextNode());
+		printReverse(node.getNextNode());
 
 		// After everything else is printed
-		System.out.print(head.getData() + " ");
+		System.out.print(node.getData() + " ");
 	}
 
 	/**
@@ -535,19 +535,20 @@ public class LinkedList<T> implements Iterable<T> {
 	 * @param k
 	 * @return
 	 */
-	public SinglyListNode<T> reverse(SinglyListNode<T> head, int k) {
-		SinglyListNode<T> current = head;
-		SinglyListNode<T> next = null;
-		SinglyListNode<T> prev = null;
+	public SinglyListNode<T> reverse(SinglyListNode<T> node, int k) {
+
+		SinglyListNode<T> currentNode = node;
+		SinglyListNode<T> nextNode = null;
+		SinglyListNode<T> prevNode = null;
 
 		int count = 0;
 
 		/* Reverse first k nodes of linked list */
-		while (count < k && current != null) {
-			next = current.getNextNode();
-			current.setNextNode(prev);
-			prev = current;
-			current = next;
+		while (count < k && currentNode != null) {
+			nextNode = currentNode.getNextNode();
+			currentNode.setNextNode(prevNode);
+			prevNode = currentNode;
+			currentNode = nextNode;
 			count++;
 		}
 
@@ -556,11 +557,61 @@ public class LinkedList<T> implements Iterable<T> {
 		 * starting from current. And make rest of the list as next of first
 		 * node
 		 */
-		if (next != null)
-			head.setNextNode(reverse(next, k));
+		if (nextNode != null)
+			node.setNextNode(reverse(nextNode, k));
 
 		// prev is now head of input list
-		return prev;
+		return prevNode;
+	}
+
+	/**
+	 * @author jd Reverses alternate k nodes and returns the pointer to the new
+	 *         head node
+	 */
+	public SinglyListNode<T> kAltReverse(SinglyListNode<T> node, int k) {
+
+		SinglyListNode<T> currentNode = node;
+		SinglyListNode<T> nextNode = null, prevNode = null;
+		int count = 0;
+
+		/* 1) reverse first k nodes of the linked list */
+		while (currentNode != null && count < k) {
+
+			nextNode = currentNode.getNextNode();
+			currentNode.setNextNode(prevNode);
+			prevNode = currentNode;
+			currentNode = nextNode;
+			count++;
+		}
+
+		/*
+		 * 2) Now head points to the kth node. So change next of head to (k+1)th
+		 * node
+		 */
+		if (node != null) {
+			node.setNextNode(currentNode);
+		}
+
+		/*
+		 * 3) We do not want to reverse next k nodes. So move the current
+		 * pointer to skip next k nodes
+		 */
+		count = 0;
+		while (count < k - 1 && currentNode != null) {
+			currentNode = currentNode.getNextNode();
+			count++;
+		}
+
+		/*
+		 * 4) Recursively call for the list starting from current->next. And
+		 * make rest of the list as next of first node
+		 */
+		if (currentNode != null) {
+			currentNode.setNextNode(kAltReverse(currentNode.getNextNode(), k));
+		}
+
+		/* 5) prev is new head of the input list */
+		return prevNode;
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////
