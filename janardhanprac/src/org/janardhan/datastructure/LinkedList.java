@@ -528,6 +528,41 @@ public class LinkedList<T> implements Iterable<T> {
 		System.out.print(head.getData() + " ");
 	}
 
+	/**
+	 * reverse k nodes
+	 * 
+	 * @param head
+	 * @param k
+	 * @return
+	 */
+	public SinglyListNode<T> reverse(SinglyListNode<T> head, int k) {
+		SinglyListNode<T> current = head;
+		SinglyListNode<T> next = null;
+		SinglyListNode<T> prev = null;
+
+		int count = 0;
+
+		/* Reverse first k nodes of linked list */
+		while (count < k && current != null) {
+			next = current.getNextNode();
+			current.setNextNode(prev);
+			prev = current;
+			current = next;
+			count++;
+		}
+
+		/*
+		 * next is now a pointer to (k+1)th node Recursively call for the list
+		 * starting from current. And make rest of the list as next of first
+		 * node
+		 */
+		if (next != null)
+			head.setNextNode(reverse(next, k));
+
+		// prev is now head of input list
+		return prev;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
