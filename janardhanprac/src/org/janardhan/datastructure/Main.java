@@ -79,6 +79,7 @@ public class Main {
 		while (inputParser.nextChar() == 'Y');
 
 		printWriter.close();
+		System.gc();
 	}
 
 }

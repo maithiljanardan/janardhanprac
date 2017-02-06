@@ -66,4 +66,9 @@ public class SinglyListNode<T> implements Comparable<T> {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "SinglyListNode [data=" + data + ", nextNode=" + nextNode + "]";
+	}
+
 }
