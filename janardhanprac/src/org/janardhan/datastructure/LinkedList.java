@@ -614,6 +614,51 @@ public class LinkedList<T> implements Iterable<T> {
 		return prevNode;
 	}
 
+	/**
+	 * @author jd
+	 * 
+	 *         Deletes nodes which have a greater value on right side
+	 */
+	public SinglyListNode<T> deleteRightNodeWithGrValue(SinglyListNode<T> node) {
+
+		SinglyListNode<T> prevNode, currentNode, nextNode;
+
+		// make current node as head node
+		currentNode = node;
+
+		// make previous node as null
+		prevNode = null;
+
+		while (currentNode.getNextNode() != null) {
+
+			// get the next node
+			nextNode = currentNode.getNextNode();
+
+			if ((int) currentNode.getData() < (int) nextNode.getData()) {
+				// If current node is smaller than the next Node and its the
+				// head node also then move the head pointer to the next node
+				if (prevNode == null) {
+					node = node.getNextNode();
+				}
+
+				// else just delete the current node
+				else {
+					prevNode.setNextNode(nextNode);
+				}
+
+			}
+
+			else {
+				prevNode = currentNode;
+			}
+			currentNode = nextNode;
+
+		}
+
+		return node;
+
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
@@ -649,4 +694,23 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	public SinglyListNode<T> getHead() {
+		return head;
+	}
+
+	public void setHead(SinglyListNode<T> head) {
+		this.head = head;
+	}
+
+	public SinglyListNode<T> getTail() {
+		return tail;
+	}
+
+	public void setTail(SinglyListNode<T> tail) {
+		this.tail = tail;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
 }

@@ -27,6 +27,7 @@ public class Main {
 		System.out.println("E. check empty");
 		System.out.println("F. get size");
 		System.out.println("G. search");
+		System.out.println("H. Delete Right Node with greater value");
 
 		do {
 
@@ -61,6 +62,14 @@ public class Main {
 			case 'G':
 				int pos = linkedList.searchNode(null, 5);
 				System.out.println("Node found at position " + pos);
+				break;
+
+			case 'H':
+				SinglyListNode<Integer> node = linkedList.deleteRightNodeWithGrValue(linkedList.getHead());
+				while (node.getNextNode() != null) {
+					System.out.print(node.getData() + "->");
+					node= node.getNextNode();
+				}
 				break;
 			default:
 				break;
