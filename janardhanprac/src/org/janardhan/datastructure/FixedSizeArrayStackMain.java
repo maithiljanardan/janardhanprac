@@ -25,15 +25,16 @@ public class FixedSizeArrayStackMain {
 			System.out.println(fixedSizeArrayStack);
 			fixedSizeArrayStack.pop();
 			System.out.println(fixedSizeArrayStack);
-//			System.out.println(fixedSizeArrayStack);
-//			fixedSizeArrayStack.push(1);
-//			System.out.println(fixedSizeArrayStack);
-//			fixedSizeArrayStack.push(4);
-//			System.out.println(fixedSizeArrayStack);
-//			fixedSizeArrayStack.pop();
-//			System.out.println(fixedSizeArrayStack);
+			// System.out.println(fixedSizeArrayStack);
+			// fixedSizeArrayStack.push(1);
+			// System.out.println(fixedSizeArrayStack);
+			// fixedSizeArrayStack.push(4);
+			// System.out.println(fixedSizeArrayStack);
+			// fixedSizeArrayStack.pop();
+			// System.out.println(fixedSizeArrayStack);
 
-		} catch (Throwable throwable) {
+		}
+		catch (Throwable throwable) {
 
 			System.out.println(throwable.getMessage());
 

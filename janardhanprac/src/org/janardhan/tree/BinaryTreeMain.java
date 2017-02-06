@@ -80,13 +80,11 @@ public class BinaryTreeMain {
 			break;
 
 		case "diameter/width of a tree":
-			System.out.print("\n" + "Diameter or Width of a binary tree >>> "
-					+ binaryTree.printDiameterOfBinaryTree(binaryTree.treeNode));
+			System.out.print("\n" + "Diameter or Width of a binary tree >>> " + binaryTree.printDiameterOfBinaryTree(binaryTree.treeNode));
 			break;
 
 		case "height of tree":
-			System.out.println(
-					"\n" + "Height or Max Depth of the tree >>> " + binaryTree.printHeightTree(binaryTree.treeNode));
+			System.out.println("\n" + "Height or Max Depth of the tree >>> " + binaryTree.printHeightTree(binaryTree.treeNode));
 			break;
 
 		case "clone binary tree":

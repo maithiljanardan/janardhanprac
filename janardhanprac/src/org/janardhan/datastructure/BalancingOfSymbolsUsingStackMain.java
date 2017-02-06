@@ -12,7 +12,8 @@ public class BalancingOfSymbolsUsingStackMain {
 		boolean flag = balancingOfSymbolsUsingStack.isTextBalanced(scanner.nextLine());
 		if (flag == true) {
 			System.out.println("String is Balanced");
-		} else {
+		}
+		else {
 			System.out.println("String is not Balanced");
 		}
 		scanner.close();
@@ -39,31 +40,38 @@ class BalancingOfSymbolsUsingStack {
 
 				if (!stack.isEmpty() && stack.peek() == '(') {
 					stack.pop();
-				} else {
+				}
+				else {
 					return false;
 
 				}
-			} else if (c == '}') {
+			}
+			else if (c == '}') {
 				if (!stack.isEmpty() && stack.peek() == '{') {
 					stack.pop();
-				} else {
+				}
+				else {
 					return false;
 
 				}
-			} else if (c == ']') {
+			}
+			else if (c == ']') {
 				if (!stack.isEmpty() && stack.peek() == '[') {
 					stack.pop();
-				} else {
+				}
+				else {
 					return false;
 
 				}
-			} else if (c == '(' || c == '{' || c == '[') {
+			}
+			else if (c == '(' || c == '{' || c == '[') {
 				stack.push(c);
 			}
 		}
 		if (stack.isEmpty()) {
 			return true;
-		} else {
+		}
+		else {
 			return false;
 		}
 	}

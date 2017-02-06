@@ -35,7 +35,8 @@ public class DLLNode<T> implements Comparable<T> {
 
 		if (t == this.data) {
 			return 1;
-		} else {
+		}
+		else {
 			return 0;
 		}
 

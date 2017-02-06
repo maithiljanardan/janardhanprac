@@ -66,9 +66,11 @@ public class DLLMain {
 					break;
 				}
 				System.out.println("Do you with to continue??");
-			} while (inputParser.nextChar() == 'y');
+			}
+			while (inputParser.nextChar() == 'y');
 			System.out.println("Achha jate kya tum... fir se ana bol k, hau??");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 
 		}

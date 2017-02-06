@@ -79,7 +79,8 @@ class MergeSort {
 			if (tempLeftSubArray[i] <= tempRightSubArray[j]) {
 				arr[k] = tempLeftSubArray[i];
 				i++;
-			} else {
+			}
+			else {
 				arr[k] = tempRightSubArray[j];
 				j++;
 			}

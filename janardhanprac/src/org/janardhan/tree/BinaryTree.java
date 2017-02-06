@@ -89,11 +89,13 @@ public class BinaryTree {
 			if (currentNode != null) {
 				stack.push(currentNode);
 				currentNode = currentNode.leftNode;
-			} else {
+			}
+			else {
 
 				if (stack.empty()) {
 					pushFlag = false;
-				} else {
+				}
+				else {
 					currentNode = stack.pop();
 					System.out.print(currentNode.data + " ");
 					currentNode = currentNode.rightNode;
@@ -154,16 +156,20 @@ public class BinaryTree {
 			if (prevNode == null || prevNode.leftNode == currentNode || prevNode.rightNode == currentNode) {
 				if (currentNode.leftNode != null) {
 					stack.push(currentNode.leftNode);
-				} else if (currentNode.rightNode != null) {
+				}
+				else if (currentNode.rightNode != null) {
 					stack.push(currentNode.rightNode);
-				} else {
+				}
+				else {
 					System.out.print(stack.pop().data + " ");
 
 				}
-			} else if (currentNode.leftNode == prevNode) {
+			}
+			else if (currentNode.leftNode == prevNode) {
 				if (currentNode.rightNode != null) {
 					stack.push(currentNode.rightNode);
-				} else {
+				}
+				else {
 					System.out.print(stack.pop().data + " ");
 				}
 			}
@@ -193,10 +199,12 @@ public class BinaryTree {
 
 		if (treeNode == null) {
 			return;
-		} else {
+		}
+		else {
 			if (level == 1) {
 				System.out.print(treeNode.data + " ");
-			} else {
+			}
+			else {
 				printPartLevel(treeNode.leftNode, level - 1);
 				printPartLevel(treeNode.rightNode, level - 1);
 			}
@@ -215,7 +223,8 @@ public class BinaryTree {
 
 		if (treeNode == null) {
 			return 0;
-		} else {
+		}
+		else {
 
 			int leftHeight = getTreeHeight(treeNode.leftNode);
 			int rightHeight = getTreeHeight(treeNode.rightNode);
@@ -265,10 +274,11 @@ public class BinaryTree {
 
 		if (treeNode == null) {
 			return 0;
-		} else {
+		}
+		else {
 
-			return Math.max(getTreeHeight(treeNode.leftNode) + getTreeHeight(treeNode.rightNode) + 1, Math
-					.max(printDiameterOfBinaryTree(treeNode.leftNode), printDiameterOfBinaryTree(treeNode.rightNode)));
+			return Math.max(getTreeHeight(treeNode.leftNode) + getTreeHeight(treeNode.rightNode) + 1,
+					Math.max(printDiameterOfBinaryTree(treeNode.leftNode), printDiameterOfBinaryTree(treeNode.rightNode)));
 		}
 	}
 
@@ -324,7 +334,8 @@ public class BinaryTree {
 		if (k == 0) {
 			System.out.print(treeNode.data + " ");
 			return;
-		} else {
+		}
+		else {
 			printKDistant(treeNode.leftNode, k - 1);
 			printKDistant(treeNode.rightNode, k - 1);
 		}

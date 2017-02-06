@@ -39,7 +39,8 @@ public class DLList<T> implements Iterable<T> {
 		public T next() {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
-			} else {
+			}
+			else {
 				T data = nextNode.getData();
 				nextNode = nextNode.getNextNode();
 				return data;
@@ -57,7 +58,8 @@ public class DLList<T> implements Iterable<T> {
 			head = dllNode;
 			head.setNextNode(null);
 			head.setPreviousNode(null);
-		} else {
+		}
+		else {
 			dllNode.setNextNode(head);
 			dllNode.setPreviousNode(null);
 			head.setPreviousNode(dllNode);

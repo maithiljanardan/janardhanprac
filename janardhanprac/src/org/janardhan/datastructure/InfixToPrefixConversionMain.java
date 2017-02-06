@@ -9,7 +9,7 @@ public class InfixToPrefixConversionMain {
 
 		String infixString = new Scanner(System.in).nextLine();
 		infixString = reverseString(infixString);
-		//After replace ( )
+		// After replace ( )
 		InfixToPrefixConversionMain.InfixToPrefixConversion infixToPrefixConversion = new InfixToPrefixConversionMain().new InfixToPrefixConversion();
 		String postfixString = infixToPrefixConversion.convertToPostfix(infixString);
 		postfixString = reverseString(postfixString);
@@ -49,7 +49,8 @@ public class InfixToPrefixConversionMain {
 					while (stack.peek() != '(')
 						postfixString = postfixString + stack.pop();
 					stack.pop();
-				} else {
+				}
+				else {
 					while (!stack.empty() && !(stack.peek() == '(') && precedence(ch) <= precedence(stack.peek())) {
 						postfixString = postfixString + stack.pop();
 					}

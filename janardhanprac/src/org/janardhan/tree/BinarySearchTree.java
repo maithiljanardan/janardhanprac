@@ -126,7 +126,8 @@ public class BinarySearchTree {
 
 		if (treeNode.data == key) {
 			maxValue(treeNode.leftNode);
-		} else if (key < treeNode.data)
+		}
+		else if (key < treeNode.data)
 			printInorderPre(treeNode.leftNode, key);
 
 		else
@@ -141,7 +142,8 @@ public class BinarySearchTree {
 
 		if (treeNode.data == key) {
 			minValue2(treeNode.rightNode);
-		} else if (key < treeNode.data)
+		}
+		else if (key < treeNode.data)
 			printInorderSuc(treeNode.leftNode, key);
 
 		else
@@ -237,11 +239,13 @@ public class BinarySearchTree {
 			if (currentNode != null) {
 				stack.push(currentNode);
 				currentNode = currentNode.leftNode;
-			} else {
+			}
+			else {
 
 				if (stack.empty()) {
 					pushFlag = false;
-				} else {
+				}
+				else {
 					currentNode = stack.pop();
 					count++;
 					if (count == i) {

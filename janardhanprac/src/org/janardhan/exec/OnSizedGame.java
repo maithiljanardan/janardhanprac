@@ -29,15 +29,18 @@ public class OnSizedGame {
 					arrList.set(i, (arrList.get(i) - (index + 1)));
 				}
 
-			} while (arrList.get(index) >= 0);
+			}
+			while (arrList.get(index) >= 0);
 
 			this.removeNegativeElement();
 
-		} while (this.arrList.size() > 1);
+		}
+		while (this.arrList.size() > 1);
 
 		if (arrList.size() > 0) {
 			out.write("Ladia \n");
-		} else {
+		}
+		else {
 			out.write("Kushagra \n");
 		}
 	}

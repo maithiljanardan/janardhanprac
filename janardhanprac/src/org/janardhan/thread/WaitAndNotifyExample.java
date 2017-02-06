@@ -53,7 +53,8 @@ class WaiterThread implements Runnable {
 
 				message.wait();
 
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			System.out.println(threadName + " got notified at " + System.currentTimeMillis());
@@ -86,7 +87,8 @@ class NotifierThread implements Runnable {
 									// selection of thread depends on OS
 				// msg.notifyAll();// All thread will get notified
 			}
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 

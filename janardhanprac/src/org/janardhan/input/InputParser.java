@@ -24,7 +24,8 @@ public class InputParser {
 		do {
 			sb.append((char) c);
 			c = read();
-		} while (c > ' ');
+		}
+		while (c > ' ');
 		return sb.toString();
 	}
 
@@ -43,7 +44,8 @@ public class InputParser {
 		do {
 			ret = ret * 10 + c - '0';
 			c = read();
-		} while (c > ' ');
+		}
+		while (c > ' ');
 		return ret;
 	}
 

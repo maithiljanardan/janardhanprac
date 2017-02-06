@@ -23,7 +23,8 @@ public class SherlockBeast {
 				num_temp = num_temp - 5;
 			}
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

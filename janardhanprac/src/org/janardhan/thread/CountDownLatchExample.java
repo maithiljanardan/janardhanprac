@@ -42,7 +42,8 @@ public class CountDownLatchExample {
 		try {
 			latch.await(); // main thread is waiting on CountDownLatch to finish
 			System.out.println("All services are up, Application is starting now");
-		} catch (InterruptedException ie) {
+		}
+		catch (InterruptedException ie) {
 			ie.printStackTrace();
 		}
 
@@ -66,7 +67,8 @@ class Service implements Runnable {
 	public void run() {
 		try {
 			Thread.sleep(timeToStart);
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, e);
 		}
 

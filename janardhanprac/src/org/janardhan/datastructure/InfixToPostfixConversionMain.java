@@ -38,7 +38,8 @@ public class InfixToPostfixConversionMain {
 					while (stack.peek() != '(')
 						postfixString = postfixString + stack.pop();
 					stack.pop();
-				} else {
+				}
+				else {
 					while (!stack.empty() && !(stack.peek() == '(') && precedence(ch) <= precedence(stack.peek())) {
 						postfixString = postfixString + stack.pop();
 					}
