@@ -14,10 +14,10 @@ public class Main {
 		OutputStream outputStream = System.out;
 		InputParser in = new InputParser(inputStream);
 		PrintWriter out = new PrintWriter(outputStream);
-		OnSizedGame solver = new OnSizedGame();
-		int testCases = in.nextInt();
-		for (int i = 1; i <= testCases; i++)
-			solver.solve(in, out);
+		SherlockBeast solver = new SherlockBeast();
+		// int testCases = in.nextInt();
+		// for (int i = 1; i <= testCases; i++)
+		solver.solve(in, out);
 		out.close();
 	}
 }
