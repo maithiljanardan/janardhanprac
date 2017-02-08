@@ -659,6 +659,58 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	/**
+	 * This function rotates a linked list counter-clockwise and updates the
+	 * head. The function assumes that k is smaller than size of linked list. It
+	 * doesn't modify the list if k is greater than or equal to size
+	 * @author jd 
+	 * @param k
+	 */
+
+	public void rotateList(int k) {
+		if (k == 0)
+			return;
+
+		// Let us understand the below code for example k = 4
+		// and list = 10->20->30->40->50->60.
+		SinglyListNode<T> currentNode = head;
+
+		// current will either point to kth or NULL after this
+		// loop. current will point to node 40 in the above example
+		int count = 1;
+		while (count < k && currentNode != null) {
+			currentNode = currentNode.getNextNode();
+			count++;
+		}
+
+		// If current is NULL, k is greater than or equal to count
+		// of nodes in linked list. Don't change the list in this case
+		if (currentNode == null)
+			return;
+
+		// current points to kth node. Store it in a variable.
+		// kthNode points to node 40 in the above example
+		SinglyListNode<T> kthNode = currentNode;
+
+		// current will point to last node after this loop
+		// current will point to node 60 in the above example
+		while (currentNode.getNextNode() != null)
+			currentNode = currentNode.getNextNode();
+
+		// Change next of last node to previous head
+		// Next of 60 is now changed to node 10
+
+		currentNode.setNextNode(head);
+
+		// Change head to (k+1)th node
+		// head is now changed to node 50
+		head = kthNode.getNextNode();
+
+		// change next of kth node to null
+		kthNode.setNextNode(null);
+
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
