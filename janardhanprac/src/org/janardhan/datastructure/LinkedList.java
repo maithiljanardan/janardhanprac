@@ -825,6 +825,50 @@ public class LinkedList<T> implements Iterable<T> {
 		return res;
 	}
 
+	public SinglyListNode<T> addTwoList(SinglyListNode<T> first, SinglyListNode<T> second) {
+
+		// set resultant list as null;
+		SinglyListNode<T> result = null;
+
+		if (first == null)
+			return second;
+		else if (second == null)
+			return first;
+
+		int size1 = getSizeOfList(first);
+		int size2 = getSizeOfList(second);
+
+		if (size1 == size2)
+			result = addListsOfSameSize(first, second);
+
+		return result;
+	}
+
+	private SinglyListNode<T> addListsOfSameSize(SinglyListNode<T> first, SinglyListNode<T> second) {
+
+		SinglyListNode<T> result = new SinglyListNode<>();
+
+		if (first == null)
+			return null;
+
+		result.setNextNode(addListsOfSameSize(first.getNextNode(), second.getNextNode()));
+		return result;
+	}
+
+	/**
+	 * Add on method for addTwoList method. Gets size of a list
+	 * 
+	 */
+	private int getSizeOfList(SinglyListNode<T> node) {
+		int size = 0;
+		while (node != null) {
+			node = node.getNextNode();
+			size++;
+		}
+		return size;
+
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
