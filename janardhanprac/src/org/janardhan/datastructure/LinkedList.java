@@ -759,6 +759,72 @@ public class LinkedList<T> implements Iterable<T> {
 
 	}
 
+	/**
+	 * Adds contents of two linked lists and return the head node of resultant
+	 * list. This method expects lists in reverse order. So the LSB becomes MSB
+	 * 
+	 * @author jd
+	 * @return
+	 */
+	public SinglyListNode<T> addTwoLists(SinglyListNode<T> first, SinglyListNode<T> second) {
+
+		SinglyListNode<T> res = null; // res is head node of the resultant list
+		SinglyListNode<T> prev = null;
+		SinglyListNode<T> temp = null;
+
+		int carry = 0, sum;
+
+		while (first != null || second != null) // while both lists exist
+		{
+			// Calculate value of next digit in resultant list.
+			// The next digit is sum of following things
+			// (i) Carry
+			// (ii) Next digit of first list (if there is a next digit)
+			// (ii) Next digit of second list (if there is a next digit)
+			sum = carry + (first != null ? (int) first.getData() : 0) + (second != null ? (int) second.getData() : 0);
+
+			// update carry for next calulation
+			carry = (sum >= 10) ? 1 : 0;
+
+			// update sum if it is greater than 10
+			sum = sum % 10;
+
+			// Create a new node with sum as data
+			temp = new SinglyListNode<T>();
+			// temp.setData(sum); commented since int mofo wont cast to T
+
+			// if this is the first node then set it as head of
+			// the resultant list
+			if (res == null) {
+				res = temp;
+			}
+			else // If this is not the first node then connect it to the rest.
+			{
+				prev.setNextNode(temp);
+			}
+
+			// Set prev for next insertion
+			prev = temp;
+
+			// Move first and second pointers to next nodes
+			if (first != null) {
+				first = first.getNextNode();
+			}
+			if (second != null) {
+				second = second.getNextNode();
+			}
+		}
+
+		if (carry > 0) {
+			temp.setNextNode(new SinglyListNode<>());
+			// temp.getNextNode().setData(carry);commented since int mofo wont
+			// cast to T
+		}
+
+		// return head of the resultant list
+		return res;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public Iterator<T> iterator() {
