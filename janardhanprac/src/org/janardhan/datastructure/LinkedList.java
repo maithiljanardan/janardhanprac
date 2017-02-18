@@ -663,7 +663,8 @@ public class LinkedList<T> implements Iterable<T> {
 	 * This function rotates a linked list counter-clockwise and updates the
 	 * head. The function assumes that k is smaller than size of linked list. It
 	 * doesn't modify the list if k is greater than or equal to size
-	 * @author jd 
+	 * 
+	 * @author jd
 	 * @param k
 	 */
 
@@ -708,6 +709,53 @@ public class LinkedList<T> implements Iterable<T> {
 
 		// change next of kth node to null
 		kthNode.setNextNode(null);
+
+	}
+
+	/**
+	 * This method sorts a list which contains 0s, 1s and 2s only. The algo is
+	 * 1) Traverse the list and count the number of 0s, 1s and 2s. Let the
+	 * counts be n1, n2 and n3 respectively. 2) Traverse the list again, fill
+	 * the first n1 nodes with 0, then n2 nodes with 1 and finally n3 nodes with
+	 * 2.
+	 * 
+	 * @param node
+	 */
+	public void sortListWithZeroOneAndTwo(SinglyListNode<T> node) {
+
+		// initialize count of 0 1 and 2 as 0
+		int count[] = { 0, 0, 0 };
+
+		SinglyListNode<T> ptr = head;
+
+		/*
+		 * count total number of '0', '1' and '2' count[0] will store total
+		 * number of '0's count[1] will store total number of '1's count[2] will
+		 * store total number of '2's
+		 */
+		while (ptr != null) {
+			count[(int) ptr.getData()]++;
+			ptr = ptr.getNextNode();
+		}
+
+		int i = 0;
+		ptr = head;
+
+		/*
+		 * Let say count[0] = n1, count[1] = n2 and count[2] = n3 now start
+		 * traversing list from head node, 1) fill the list with 0, till n1 > 0
+		 * 2) fill the list with 1, till n2 > 0 3) fill the list with 2, till n3
+		 * > 0
+		 */
+		while (ptr != null) {
+			if (count[i] == 0)
+				i++;
+			else {
+				// ptr.setData(i); commented since int mofo wont cast to T
+				--count[i];
+				ptr = ptr.getNextNode();
+			}
+		}
 
 	}
 
