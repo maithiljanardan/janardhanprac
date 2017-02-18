@@ -829,6 +829,8 @@ public class LinkedList<T> implements Iterable<T> {
 
 		// set resultant list as null;
 		SinglyListNode<T> result = null;
+		int carry = 0;
+		SinglyListNode<T> currentNode = null;
 
 		if (first == null)
 			return second;
@@ -839,19 +841,51 @@ public class LinkedList<T> implements Iterable<T> {
 		int size2 = getSizeOfList(second);
 
 		if (size1 == size2)
-			result = addListsOfSameSize(first, second);
+			result = addListsOfSameSize(first, second, carry);
+		else {
+			int diff = Math.abs(size1 - size2);
 
+			// First list should always be larger than second list.
+			// If not, swap pointers
+			if (size1 < size2)
+				swapNodes(first, second);
+
+			// move diff. number of nodes in first list
+			for (currentNode = first; diff-- > 0; currentNode = currentNode.getNextNode())
+
+				// get addition of same size lists
+				result = addListsOfSameSize(currentNode, second, carry);
+
+			// get addition of remaining first list and carry
+			addCarryToRemaining(first, currentNode, carry, result);
+		}
 		return result;
 	}
 
-	private SinglyListNode<T> addListsOfSameSize(SinglyListNode<T> first, SinglyListNode<T> second) {
+	private void addCarryToRemaining(SinglyListNode<T> first, SinglyListNode<T> currentNode, int carry, SinglyListNode<T> result) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void swapNodes(SinglyListNode<T> first, SinglyListNode<T> second) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private SinglyListNode<T> addListsOfSameSize(SinglyListNode<T> first, SinglyListNode<T> second, int carry) {
 
 		SinglyListNode<T> result = new SinglyListNode<>();
+		int sum = 0;
 
 		if (first == null)
 			return null;
 
-		result.setNextNode(addListsOfSameSize(first.getNextNode(), second.getNextNode()));
+		result.setNextNode(addListsOfSameSize(first.getNextNode(), second.getNextNode(), carry));
+		sum = (int) first.getData() + (int) second.getData() + carry;
+		sum = sum % 10;
+		carry = sum / 10;
+		// result.setData(sum);commented since int mofo wont cast to T
+
 		return result;
 	}
 
