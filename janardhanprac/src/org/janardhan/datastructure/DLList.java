@@ -3,6 +3,8 @@ package org.janardhan.datastructure;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.janardhan.tree.TreeNode;
+
 public class DLList<T> implements Iterable<T> {
 
 	private DLLNode<T> head;
@@ -77,6 +79,60 @@ public class DLList<T> implements Iterable<T> {
 			System.out.print(t + "-->");
 		}
 		System.out.println();
+	}
+
+	public DLLNode<T> bTreeToCList(DLLNode<T> node) {
+
+		if (node == null)
+			return null;
+
+		// Recursively convert left and right subtrees
+		DLLNode<T> left = bTreeToCList(node.getPreviousNode());
+		DLLNode<T> right = bTreeToCList(node.getNextNode());
+
+		// Make a circular linked list of single node
+		// (or root). To do so, make the right and
+		// left pointers of this node point to itself
+		node.setPreviousNode(node);
+		node.setNextNode(node);
+		// Step 1 (concatenate the left list with the list
+		// with single node, i.e., current node)
+		// Step 2 (concatenate the returned list with the
+		// right List)
+		return concatenate(concatenate(left, node), right);
+	}
+
+	// concatenate both the lists and returns the head
+	// of the List
+	public DLLNode<T> concatenate(DLLNode<T> leftList, DLLNode<T> rightList) {
+		// If either of the list is empty, then
+		// return the other list
+		if (leftList == null)
+			return rightList;
+		if (rightList == null)
+			return leftList;
+
+		// Store the last Node of left List
+		DLLNode<T> leftLast = leftList.getPreviousNode();
+
+		// Store the last Node of right List
+		DLLNode<T> rightLast = rightList.getNextNode();
+
+		// Connect the last node of Left List
+		// with the first Node of the right List
+		leftLast.setNextNode(rightLast);
+		rightList.setPreviousNode(leftLast);
+
+		// left of first node refers to
+		// the last node in the list
+		leftList.setPreviousNode(rightLast);
+
+		// Right of last node refers to the first
+		// node of the List
+		rightLast.setNextNode(leftLast);
+
+		// Return the Head of the List
+		return leftList;
 	}
 
 	public void insertAtEnd(int nextInt) {

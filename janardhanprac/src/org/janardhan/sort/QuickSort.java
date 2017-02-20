@@ -39,7 +39,7 @@ public class QuickSort {
 
 	private static int partition(int[] arr, int first, int last) {
 
-		int pivotValue = arr[0];
+		int pivotValue = arr[first];
 		int leftMark = first + 1;
 		int rightMark = last;
 		int temp;

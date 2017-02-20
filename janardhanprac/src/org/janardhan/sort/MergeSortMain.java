@@ -4,7 +4,7 @@ public class MergeSortMain {
 
 	public static void main(String[] args) {
 
-		// Inititalizing an array
+		// Initializing an array
 		int arr[] = { 5, 0, 10, 2, 4, 1, 6 };
 
 		// printing array before merge sort is done
