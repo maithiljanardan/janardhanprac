@@ -8,11 +8,18 @@ public class InfixToPrefixConversionMain {
 	public static void main(String[] args) {
 
 		String infixString = new Scanner(System.in).nextLine();
+
+		// reverse everything except brakcets
 		infixString = reverseString(infixString);
+
 		// After replace ( )
 		InfixToPrefixConversionMain.InfixToPrefixConversion infixToPrefixConversion = new InfixToPrefixConversionMain().new InfixToPrefixConversion();
+
+		// call same method as in infix to postfix
 		String postfixString = infixToPrefixConversion.convertToPostfix(infixString);
+
 		postfixString = reverseString(postfixString);
+
 		System.out.println(postfixString);
 	}
 
