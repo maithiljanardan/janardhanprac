@@ -7,10 +7,14 @@ public class InfixToPostfixConversionMain {
 
 	public static void main(String[] args) {
 
+		// Takes infix expression as input
 		String infixString = new Scanner(System.in).nextLine();
+
 		// Instantiating Inner or Non-static class
 		InfixToPostfixConversionMain.InfixToPostfixConversion infixToPostfixConversion = new InfixToPostfixConversionMain().new InfixToPostfixConversion();
+
 		String postfixString = infixToPostfixConversion.convertToPostfix(infixString);
+
 		System.out.println(postfixString);
 	}
 
@@ -18,7 +22,7 @@ public class InfixToPostfixConversionMain {
 
 		public String convertToPostfix(String infixString) {
 
-			char ch;
+			char currentChar;
 			String postfixString = "";
 
 			Stack<Character> stack = new Stack<>();
@@ -28,22 +32,35 @@ public class InfixToPostfixConversionMain {
 
 			for (int i = 0; i < infixString.length(); i++) {
 
-				ch = infixString.charAt(i);
+				// Iterate over the characters in string
+				currentChar = infixString.charAt(i);
 
-				if (Character.isLetter(ch))
-					postfixString = postfixString + ch;
-				else if (ch == '(')
-					stack.push(ch);
-				else if (ch == ')') {
+				// If character is a letter just add it to postfix expression
+				if (Character.isLetter(currentChar))
+					postfixString = postfixString + currentChar;
+
+				// Push if bracket starts
+				else if (currentChar == '(')
+					stack.push(currentChar);
+
+				// Pop it bracket end if ) is encountered
+				else if (currentChar == ')') {
+
 					while (stack.peek() != '(')
 						postfixString = postfixString + stack.pop();
+
+					// finally pop (
 					stack.pop();
 				}
 				else {
-					while (!stack.empty() && !(stack.peek() == '(') && precedence(ch) <= precedence(stack.peek())) {
+
+					// If the precedence of current character is less than peek
+					// valuse and stack is non empty and peek value is not (
+					// then pop it
+					while (!stack.empty() && !(stack.peek() == '(') && precedence(currentChar) <= precedence(stack.peek())) {
 						postfixString = postfixString + stack.pop();
 					}
-					stack.push(ch);
+					stack.push(currentChar);
 				}
 
 			}
