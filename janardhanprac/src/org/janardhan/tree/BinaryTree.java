@@ -86,10 +86,15 @@ public class BinaryTree {
 
 		while (pushFlag) {
 
+			// Keep pushing left nodes till leaf node is reached
 			if (currentNode != null) {
 				stack.push(currentNode);
 				currentNode = currentNode.leftNode;
 			}
+
+			// Stack will have root at the bottom of the stack . Idea is to pop
+			// one element print it and then push its right
+			// Once the stack is empty exit the while loop
 			else {
 
 				if (stack.empty()) {
@@ -103,6 +108,56 @@ public class BinaryTree {
 
 			}
 		}
+
+	}
+
+	/**
+	 * Function to traverse binary tree without recursion and without stack
+	 */
+	public void MorrisTraversalForInorderTraversal(TreeNode root) {
+
+		TreeNode currentNode, preNode;
+
+		if (root == null)
+			return;
+
+		currentNode = root;
+
+		while (currentNode != null) {
+
+			if (currentNode.leftNode == null) {
+
+				System.out.print(currentNode.data + " ");
+				currentNode = currentNode.rightNode;
+			}
+
+			else {
+
+				/* Find the inorder predecessor of current */
+				preNode = currentNode.leftNode;
+
+				while (preNode.rightNode != null && preNode.rightNode != currentNode)
+					preNode = preNode.rightNode;
+
+				/* Make current as right child of its inorder predecessor */
+				if (preNode.rightNode == null) {
+					preNode.rightNode = currentNode;
+					currentNode = currentNode.leftNode;
+				}
+
+				/*
+				 * Revert the changes made in if part to restore the original
+				 * tree i.e.,fix the right child of predecssor
+				 */
+				else {
+					preNode.rightNode = null;
+					System.out.print(currentNode.data + " ");
+					currentNode = currentNode.rightNode;
+				} /* End of if condition pre->right == NULL */
+
+			} /* End of if condition current->left == NULL */
+
+		} /* End of while */
 
 	}
 
