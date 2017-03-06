@@ -446,4 +446,19 @@ public class BinaryTree {
 		return (leftLCA == null) ? rightLCA : leftLCA;
 	}
 
+	/**
+	 * 
+	 * 
+	 * This method returns the size of the binary tree
+	 * 
+	 * @param root
+	 *            takes root node as input parameter
+	 * @return the nodes present in the tree
+	 */
+	public int getSizeOfTree(TreeNode root) {
+
+		if (root == null)
+			return 0;
+		return (getSizeOfTree(root.leftNode) + getSizeOfTree(root.rightNode) + 1);
+	}
 }
