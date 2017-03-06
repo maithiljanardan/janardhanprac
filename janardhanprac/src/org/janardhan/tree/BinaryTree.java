@@ -196,8 +196,8 @@ public class BinaryTree {
 		// Getting height of the tree
 		int treeHeight = getTreeHeight(treeNode);
 
-		for (int i = 1; i <= treeHeight; i++) {
-			printPartLevel(treeNode, i);
+		for (int level = 1; level <= treeHeight; level++) {
+			printPartLevel(treeNode, level);
 
 		}
 	}
@@ -253,6 +253,14 @@ public class BinaryTree {
 		}
 	}
 
+	/**
+	 * Uses queue to print level order for a binary tree Takes root as parameter
+	 * and enqueues it into the queue and then iterates while queue is not empty
+	 * simultaneously enqueuing left and right child of the current node
+	 * 
+	 * @param root
+	 * 
+	 */
 	public void printLevelOrderTreeTraversalUsingQueue(TreeNode treeNode) {
 
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
