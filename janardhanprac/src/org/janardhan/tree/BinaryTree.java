@@ -185,9 +185,9 @@ public class BinaryTree {
 	}
 
 	/**
-	 * This method prints the nodes level wise from left to right. It first
-	 * calculate the height of the tree and then iterate over the levels to
-	 * print the node for that level
+	 * (BFS) This method prints the nodes level wise from left to right. It
+	 * first calculate the height of the tree and then iterate over the levels
+	 * to print the node for that level
 	 * 
 	 * @param treeNode
 	 */
