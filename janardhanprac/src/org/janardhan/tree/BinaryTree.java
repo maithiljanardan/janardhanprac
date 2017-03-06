@@ -461,4 +461,18 @@ public class BinaryTree {
 			return 0;
 		return (getSizeOfTree(root.leftNode) + getSizeOfTree(root.rightNode) + 1);
 	}
+
+	/**
+	 * Checks whether the the trees are identical
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public boolean isIdentical(TreeNode rootA, TreeNode rootB) {
+
+		if (rootA == null && rootB == null)
+			return false;
+		else
+			return ((rootA.data == rootB.data) && (isIdentical(rootA.leftNode, rootB.leftNode)) && (isIdentical(rootA.rightNode, rootB.rightNode)));
+	}
 }
