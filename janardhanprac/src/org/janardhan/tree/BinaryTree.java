@@ -475,4 +475,30 @@ public class BinaryTree {
 		else
 			return ((rootA.data == rootB.data) && (isIdentical(rootA.leftNode, rootB.leftNode)) && (isIdentical(rootA.rightNode, rootB.rightNode)));
 	}
+
+	/**
+	 * This function is same as deleteTree() in the previous program
+	 * 
+	 */
+	private void deleteTreeUtil(TreeNode node) {
+		if (node == null) {
+			return;
+		}
+
+		/* first delete both subtrees */
+		deleteTreeUtil(node.leftNode);
+		deleteTreeUtil(node.rightNode);
+
+		/* then delete the node */
+		System.out.println("The deleted node is " + node.data);
+		node = null;
+	}
+
+	/**
+	 * Wrapper function that deletes the tree and sets root node as null
+	 */
+	public void deleteTree(TreeNode nodeRef) {
+		deleteTreeUtil(nodeRef);
+		nodeRef = null;
+	}
 }
