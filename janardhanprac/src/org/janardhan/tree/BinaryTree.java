@@ -193,8 +193,8 @@ public class BinaryTree {
 	 */
 	public void printLevelOrderTreeTraversal(TreeNode treeNode) {
 
+		// Getting height of the tree
 		int treeHeight = getTreeHeight(treeNode);
-		// System.out.println("Height of the tree is >>> " + treeHeight);
 
 		for (int i = 1; i <= treeHeight; i++) {
 			printPartLevel(treeNode, i);
@@ -202,6 +202,12 @@ public class BinaryTree {
 		}
 	}
 
+	/**
+	 * This method prints all nodes for a particular level
+	 * 
+	 * @param treeNode
+	 * @param level
+	 */
 	private void printPartLevel(TreeNode treeNode, int level) {
 
 		if (treeNode == null) {
@@ -212,6 +218,7 @@ public class BinaryTree {
 				System.out.print(treeNode.data + " ");
 			}
 			else {
+				// keep of decreasing the level
 				printPartLevel(treeNode.leftNode, level - 1);
 				printPartLevel(treeNode.rightNode, level - 1);
 			}
@@ -224,15 +231,19 @@ public class BinaryTree {
 	 * @param treeNode
 	 * @return
 	 * 
-	 * 		This method return the height of the tree
+	 * 		This method return the height of the tree. The height of left and
+	 *         right subtree is calculated recursively and then the max of the
+	 *         two plus one(root node) is returned
 	 */
 	private int getTreeHeight(TreeNode treeNode) {
 
+		// Returns 0
 		if (treeNode == null) {
 			return 0;
 		}
 		else {
 
+			// get left and right subtree height
 			int leftHeight = getTreeHeight(treeNode.leftNode);
 			int rightHeight = getTreeHeight(treeNode.rightNode);
 
